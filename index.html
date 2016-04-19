@@ -1,0 +1,160 @@
+<html>
+
+<head>
+    <title> ~ LiveHighlights ~ </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel='stylesheet' type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+
+<body ng-app="ngLiveHighlights" ng-controller="ngLHController as showCase">
+
+
+    <nav class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" href="#">{{ Title }}</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Highlights / Goals</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+        <form class="form-inline navbar-form pull-right">
+            <input class="form-control" type="text" placeholder="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+        </form>
+    </nav>
+
+
+    <!-- div masonry>
+        <div class="masonry-brick">
+        </div>
+        <div class="masonry-brick" ng-repeat="Game in FootballGames" ng-selected="">
+            <h3>{{ Game.League }} ~ {{ Game.TeamAvsTeamB }}</h3>
+            <button ng-click="WatchGame(Game.Links)">Watch</button>
+        </div>
+    </div -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- <table datatable="" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs"  class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>League</th>
+                        <th>TeamA vs TeamB</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="Game in FootballGames" >
+                            <td>{{ Game.League }}</td>
+                            <td>{{ Game.TeamAvsTeamB }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+ -->    
+                <p class="text-danger">You clicked on: <strong>{{ showCase.message }}</strong></p>
+
+                <table datatable="" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs"  class="table table-striped table-bordered responsive" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><h4>League</h4></th>
+                            <th class="text-center"><h4>Time</h4></th>
+                            <th class="text-center all"><h4>Team A - Team B</h4></th>
+                            <th class="text-center"><h4>Q</h4></th>
+                            <th class="text-center"><h4>L</h4></th>
+                            <th class="text-center min-phone-l"><h4>W</h4></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th class="text-center"><h4>League</h4></th>
+                        <th class="text-center"><h4>Time</h4></th>
+                        <th class="text-center all"><h4>Team A - Team B</h4></th>
+                        <th class="text-center"><h4>Q</h4></th>
+                        <th class="text-center"><h4>L</h4></th>
+                        <th class="text-center min-phone-l"><h4>W</h4></th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr ng-repeat="Game in FootballGames" >
+                            <td>{{ Game.League }}</td>
+                            <td>{{ Game.Time | date:'HH:mm Z' }}</td>
+                            <td>{{ Game.TeamAvsTeamB }}</td>
+                            <td>{{ Game.Quality }}</td>
+                            <td>{{ Game.Language }}</td>
+                            <td><button type="button" class="btn btn-primary">Watch</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div> 
+    <!-- <pre>{{ FootballGames | json }}</pre> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<!-- <script src="http://passy.github.io/angular-masonry/bower_components/masonry/masonry.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
+
+<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.2/ui-bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.2/ui-bootstrap-tpls.min.js"></script>
+<script type="text/javascript" src="scripts/angular-masonry.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="scripts/ngLHController.js"></script>
+<script type="text/javascript" src="scripts/ngLHFactory.js"></script>
+<script type="text/javascript" src="scripts/angular-datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/angular-datatables.min.css">
+</html>

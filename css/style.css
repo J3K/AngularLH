@@ -1,0 +1,20 @@
+body{
+	font-family: 'Source Sans Pro', sans-serif;
+	min-height: 2000px;
+}
+
+.masonry-brick { font-size: 10px; width: 200px; }
+.masonry-brick > h3 { font-size: 14px; }
+
+.navbar{
+	background: #0273D4;
+	color: white;
+	border-radius: 0px;
+
+}
+.navbar > a{
+	color: white;
+}
+li > a{
+	color: white;
+}
