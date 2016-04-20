@@ -8,15 +8,20 @@ angular
 .factory('ngLHFactory', function ($http)
 {
 
-    var FootballGamesData = "";
+
 
     function getFootballGames()	
     {
-        return $http.get('http://livehighlights.net/JSON.json');
+        return $http.get('http://livehighlights.net/JSON/1/1');
+    }
+    function getFootballHighlightsv1()	
+    {
+        return $http.get('http://livehighlights.net/asasdasd.json');
     }
 
     return {
-        getFootballGames : getFootballGames
+        getFootballGames : getFootballGames,
+        getFootballHighlightsv1 : getFootballHighlightsv1
     }
 
 }

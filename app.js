@@ -1,4 +1,4 @@
-angular.module('ngLiveHighlights', ['ui.bootstrap','wu.masonry','datatables']);
+angular.module('ngLiveHighlights', ['ui.bootstrap','wu.masonry']);
 
 jQuery(document).ready(function($) {
 	var navbar = $('.navbar');
