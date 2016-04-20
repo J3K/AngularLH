@@ -8,6 +8,10 @@
     <link rel='stylesheet' type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"/>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <link href="http://vjs.zencdn.net/5.9.2/video-js.css" rel="stylesheet">
+  <!-- If you'd like to support IE8 -->
+  <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 </head>
 
 
@@ -30,15 +34,16 @@
         </div>
 
         <div class="row ng-enter" ng-if="PlayerExpanded">
-            <div class="col-sm-12 text-center" style="min-height:520px">
+            <div class="col-sm-12 text-center" style="min-height:520px" ng-if="!isHighlights">
+                <iframe ng-src="{{PlayerCode}}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+             <div class="col-sm-12 text-center" style="min-height:520px" ng-if="isHighlights">
                 <iframe ng-src="{{PlayerCode}}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8">
-
+            <div class="col-md-6">
                 <h2 class="text-center">Live Football Games</h2>
-
                     <form>
                         <div class="form-group">
                             <div class="input-group">
@@ -48,7 +53,7 @@
                         </div>
                     </form>
 
-                <table dt-options="showCase.dtOptions" class="table table-striped table-bordered responsive" cellspacing="0" width="100%">
+                <table id="LiveFootballGamesTable" datatable="ng"  dt-options="showCase.dtOptions0" dt-column-defs="showCase.dtColumnDefs0" dt-columns="showCase.dtColumns0" dt-instance="showCase.dtInstance0"  class="table table-striped table-bordered responsive" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th class="text-center"><h4>League</h4></th>
@@ -61,35 +66,47 @@
                         </tr>
                     </thead>
                     <tfoot>
-                    <tr>
-                        <th class="text-center"><h4>League</h4></th>
-                        <th class="text-center"><h4>Time</h4></th>
-                        <th class="text-center all"><h4>Team A - Team B</h4></th>
-                        <th class="text-center"><h4>Q</h4></th>
-                        <th class="text-center"><h4>L</h4></th>
-                        <th class="text-center min-phone-l"><h4>W</h4></th>
-                        <th class="text-center" ng-if="links.expanded" ><h4></h4>s</th>
-                    </tr>
+                        <tr>
+                            <th class="text-center"><h4>League</h4></th>
+                            <th class="text-center"><h4>Time</h4></th>
+                            <th class="text-center all"><h4>Team A - Team B</h4></th>
+                            <th class="text-center"><h4>Q</h4></th>
+                            <th class="text-center"><h4>L</h4></th>
+                            <th class="text-center min-phone-l"><h4>W</h4></th>
+                            <th class="text-center" ng-if="links.expanded" ><h4></h4>s</th>
+                        </tr>
                     </tfoot>
                     <tbody>
                         <tr ng-repeat-start="Game in FootballGames | orderBy:sortType2 | orderBy:sortType | filter:searchGame" >
-                            <td>{{ Game.League }}</td>
-                            <td>{{ Game.Time * 1000 | date:'HH:mm' }}</td>
+                            <td class="text-center">
+                                <font color="darkgreen">
+                                    <strong>{{ Game.League }}</strong>
+                                </font>
+                            </td>
+                            <td class="text-center">
+                                <strong>{{ Game.Time * 1000 | date:'HH:mm' }}</strong>
+                            </td>
                             <td>
                                 <div class="row">
                                     <div class="col-md-2 sm-hidden">
                                         <img ng-src="http://livehighlights.net/{{ Game.logoTeamA }}" height="25" width="25"/>
                                     </div>
-                                    <div class="col-md-10">{{ Game.TeamAvsTeamB | split:'-':0 }}</div>
+                                    <div class="col-sm-12 col-md-10"><strong>{{ Game.TeamAvsTeamB | split:'-':0 }}</strong></div>
                                 </div> 
                                 <div class="row">
                                     <div class="col-md-2 sm-hidden"><img ng-src="http://livehighlights.net/{{ Game.logoTeamB }}" height="25" width="25"/></div>
-                                    <div class="col-md-10">{{ Game.TeamAvsTeamB | split:'-':1 }}</div>
+                                    <div class="col-sm-12 col-md-10"><strong>{{ Game.TeamAvsTeamB | split:'-':1 }}</strong></div>
                                 </div>
                             </td>
-                            <td>{{ Game.Quality }}</td>
-                            <td>{{ Game.Language }}</td>
-                            <td>
+                            <td class="text-center">
+                                <strong>{{ Game.Quality }}</strong>
+                                </td>
+                            <td class="text-center">
+                                <font color="darkblue">
+                                    <strong>{{ Game.Language }}</strong>
+                                </font>
+                                </td>
+                            <td class="text-center">
                                 <button type="button" class="btn btn-primary" ng-click="links.expanded = !links.expanded">Watch</button>
                             </td>
                         </tr>
@@ -106,56 +123,101 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-4">
-
+            <div class="col-md-3">
                 <h2 class="text-center">Highlights / Goals v1</h2>
 
                     <form>
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                                <input type="text" class="form-control" placeholder="Search " ng-model="searchGame">
+                                <input type="text" class="form-control" placeholder="Search " ng-model="searchHighlight">
                             </div>      
                         </div>
                     </form>
 
-                <table class="table table-striped table-bordered responsive" cellspacing="0" width="100%">
+                <table id="Highlightsv1Table" datatable="ng" dt-options="showCase.dtOptions1" dt-column-defs="showCase.dtColumnDefs1" dt-columns="showCase.dtColumns1" dt-instance="showCase.dtInstanceCallback" class="table table-striped table-bordered responsive" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th class="text-center"><h4>League</h4></th>
-                            <th class="text-center"><h4>Time</h4></th>
-                            <th class="text-center all"><h4>Team A </h4></th>
-                            <th class="text-center"><h4>Score</h4></th>
-                            <th class="text-center"><h4>Team B</h4></th>
-                            <th class="text-center min-phone-l"><h4>W</h4></th>
+                            <th class="text-center"><h4></h4></th>
+                            <th class="text-center"><h4>Teams</h4></th>
+                            <th class="text-center all"><h4>Score</h4></th>
+                            <th class="text-center"><h4></h4></th>
                         </tr>
                     </thead>
-                    <tfoot>
-                    <tr>
-                            <th class="text-center"><h4>League</h4></th>
-                            <th class="text-center"><h4>Time</h4></th>
-                            <th class="text-center all"><h4>Team A </h4></th>
-                            <th class="text-center"><h4>Score</h4></th>
-                            <th class="text-center"><h4>Team B</h4></th>
-                            <th class="text-center min-phone-l"><h4>W</h4></th>
-                    </tr>
-                    </tfoot>
-                    <tbody>
-                        <tr ng-repeat="Highlight in FootballHighlightsv1" >
+                    <tbody class="text-center">
+                        <tr ng-repeat="Highlight in FootballHighlightsv1 | filter:searchHighlightv1" >
                             <td>
                                 <img ng-src="{{ Highlight.logo }}" height="25" width="25"/>
                             </td>
-                            <td>{{ Highlight.date  | split:' ':0 }}</td>
-                            <td>{{ Highlight.hometeam }}</td>
-                            <td>{{ Highlight.score }}</td>
-                            <td>{{ Highlight.awayteam }}</td>
+                            <!-- <td>{{ Highlight.date  | split:' ':0 }}</td> -->
                             <td>
-                                <button type="button" class="btn btn-primary" ng-click="ClickedHighlightsLink(Highlight.link)">Watch</button>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ Highlight.hometeam }}
+                                    </div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ Highlight.awayteam }}
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ Highlight.score | split:'-':0 }}
+                                    </div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ Highlight.score | split:'-':1 }}
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-xs" ng-click="ClickedHighlightsLink(Highlight.link)">Watch</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
 
+            </div>
+
+            <div class="col-md-3">
+
+                <h2 class="text-center">Highlights / Goals v2</h2>
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                                <input type="text" class="form-control" placeholder="Search " ng-model="searchHighlight">
+                            </div>      
+                        </div>
+                    </form>
+
+                <table id="Highlightsv2Table" datatable="ng" dt-options="showCase.dtOptions2" dt-instance="showCase.dtInstance0" dt-column-defs="showCase.dtColumnDefs2" dt-columns="showCase.dtColumns2" class="table table-striped table-bordered responsive" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><h4>Teams</h4></th>
+                            <th class="text-center"><h4></h4></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr ng-repeat="Highlight in FootballHighlightsv2 | filter:searchHighlightv2" >
+                            <td>{{ Highlight.game }}                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-xs" ng-click="ClickedHighlightsLink(Highlight.link)">Watch</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ LiveScoreTable }}
             </div>
         </div>
     </div> 
@@ -166,11 +228,11 @@
 
 </body>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-<!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <!-- <script src="http://passy.github.io/angular-masonry/bower_components/masonry/masonry.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
 
-<!-- <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script> -->
+<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.2/ui-bootstrap.min.js"></script>
@@ -179,8 +241,11 @@
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript" src="scripts/ngLHController.js"></script>
 <script type="text/javascript" src="scripts/ngLHFactory.js"></script>
-<!-- <script type="text/javascript" src="scripts/angular-datatables.min.js"></script> -->
-<!-- <link rel="stylesheet" type="text/css" href="css/angular-datatables.min.css"> -->
+
+<script type="text/javascript" src="scripts/angular-datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/angular-datatables.min.css">
+
+  <script src="http://vjs.zencdn.net/5.9.2/video.js"></script>
 </html>
 
 

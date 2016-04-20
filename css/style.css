@@ -21,7 +21,7 @@ li > a{
 
 
 div.dataTables_wrapper div.dataTables_paginate {
-    text-align: left;
+        text-align: center;
 }
 
 a.paginate_button {

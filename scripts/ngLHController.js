@@ -1,15 +1,19 @@
 angular
 .module('ngLiveHighlights')
-.controller('ngLHController', function ($scope,$sce, ngLHFactory)
+.controller('ngLHController', function ($scope,$sce, ngLHFactory,DTOptionsBuilder,DTColumnBuilder, DTColumnDefBuilder )
 {
     $scope.Title = " LiveHighlights ";
     $scope.FootballGames;
     $scope.FootballHighlightsv1;
+    $scope.FootballHighlightsv2;
 
     $scope.sortType     = 'Time'; // set the default sort type
     $scope.sortType2    = 'TeamAvsTeamB'; // set the default sort type
     $scope.sortReverse  = false;  // set the default sort order
     $scope.searchGame   = '';     // set the default search/filter term
+    $scope.searchHighlightv1   = '';     // set the default search/filter term
+    $scope.searchHighlightv2   = '';     // set the default search/filter term
+
 
     ngLHFactory.getFootballGames().success(function(FootballGames){
         $scope.FootballGames = FootballGames;
@@ -24,6 +28,13 @@ angular
         console.log(error);
     });
 
+    ngLHFactory.getFootballHighlightsv2().success(function(FootballHighlightsv2){
+        $scope.FootballHighlightsv2 = FootballHighlightsv2;
+        // console.log("LENGTH" + FootballHighlightsv2.length);
+    }).error(function(error){
+        console.log(error);
+    });
+
     $scope.WatchGame = function (argument) {
         // body...
         console.log(argument);
@@ -34,7 +45,10 @@ angular
 
         // console.log($scope.PlayerExpanded);
         if(!$scope.PlayerExpanded)
+        {
             $scope.PlayerExpanded = !$scope.PlayerExpanded;
+            $scope.isHighlights = false;
+        }
         else $scope.PlayerExpanded = true;
 
         $scope.PlayerCode = $sce.trustAsResourceUrl(key);
@@ -47,7 +61,10 @@ angular
 
         // console.log($scope.PlayerExpanded);
         if(!$scope.PlayerExpanded)
+        {
             $scope.PlayerExpanded = !$scope.PlayerExpanded;
+            $scope.isHighlights = true;
+        }
         else $scope.PlayerExpanded = true;
 
         $scope.PlayerCode = $sce.trustAsResourceUrl("http://cdn.livehighlights.net/content/web" + key);
@@ -55,26 +72,60 @@ angular
 
     }
 
-    //$scope.dtOptions = DTOptionsBuilder.newOptions() .withOption('order', [1, 'desc']); 
+    var vm = this;
 
-    // var vm = this;
+    vm.dtOptions1 = DTOptionsBuilder.newOptions()
+        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
+        .withOption('language', {"emptyTable": "<h4><img src=\"http://livehighlights.net/img/progress_bar.gif\" ></h4>"})
+        // .withOption('order', [1, 'desc'])
+        // .withOption('aaSorting', [ 2, 'asc' ])
+        // .withOption('stateSave', true)
+        .withOption('pageLength', 15);
 
-    // vm.dtOptions = DTOptionsBuilder.newOptions()
-    //     .withDOM("<'row'<'col-sm-6'p><'col-sm-6'f>><'row'<'col-sm-12't>>") // pitrfl
-    //     .withOption('language', {"emptyTable": "<h4>No game available right now ...</h4>"})
-    //     .withOption('order', [[1, 'asc'],[ 2, 'asc' ]])
-    //     // .withOption('aaSorting', [ 2, 'asc' ])
-    //     // .withOption('stateSave', true)
-    //     .withOption('pageLength', 15);
+    vm.dtColumnDefs1 = [
+        DTColumnDefBuilder.newColumnDef(0).withOption('width', '10%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(1).withOption('width', '50%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(2).withOption('width', '20%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(3).withOption('width', '20%').notSortable()
+        // DTColumnDefBuilder.newColumnDef(4).withOption('width', '20%').notSortable(),
+        // DTColumnDefBuilder.newColumnDef(5).withOption('width', '10%').notSortable()
+    ];      
 
-    // vm.dtColumnDefs = [
-    //     DTColumnDefBuilder.newColumnDef(0).withOption('width', '20%').notSortable(),
-    //     DTColumnDefBuilder.newColumnDef(1).withOption('width', '5%').notSortable(),
-    //     DTColumnDefBuilder.newColumnDef(2).withOption('width', '45%').notSortable(),
-    //     DTColumnDefBuilder.newColumnDef(3).withOption('width', '5%').notSortable(),
-    //     DTColumnDefBuilder.newColumnDef(4).withOption('width', '10%').notSortable(),
-    //     DTColumnDefBuilder.newColumnDef(5).withOption('width', '10%').notSortable()
-    // ];      
+
+
+    vm.dtOptions0 = DTOptionsBuilder.newOptions()
+        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
+        .withOption('language', {"emptyTable": "<h4><img src=\"http://livehighlights.net/img/progress_bar.gif\" ></h4>"})
+        .withOption('order', [1, 'asc'])
+        .withOption('scroller', {'loadingIndicator': true})
+        // .withOption('aaSorting', [ 2, 'asc' ])
+        // .withOption('stateSave', true)
+        .withOption('pageLength', 15);
+
+    vm.dtColumnDefs0 = [
+        DTColumnDefBuilder.newColumnDef(0).withOption('width', '30%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(1).withOption('width', '5%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(2).withOption('width', '60%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(3).withOption('width', '5%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(4).withOption('width', '10%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(5).withOption('width', '10%').notSortable()
+    ];    
+
+
+    vm.dtOptions2 = DTOptionsBuilder.newOptions()
+        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
+        .withOption('language', {"emptyTable": "<h4><img src=\"http://livehighlights.net/img/progress_bar.gif\" ></h4>"})
+        // .withOption('order', [1, 'asc'])
+        // .withOption('aaSorting', [ 2, 'asc' ])
+        // .withOption('stateSave', true)
+        .withOption('pageLength', 15);
+
+    vm.dtColumnDefs2 = [
+        DTColumnDefBuilder.newColumnDef(0).withOption('width', '80%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(1).withOption('width', '20%').notSortable()
+    ];      
+
+
 
 
 }).filter('split', function() {
