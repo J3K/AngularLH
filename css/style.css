@@ -7,14 +7,46 @@ body{
 .masonry-brick > h3 { font-size: 14px; }
 
 .navbar{
+	height: 50px;
 	background: #0273D4;
 	color: white;
 	border-radius: 0px;
-
 }
-.navbar > a{
+.navbar-inner > a{
 	color: white;
 }
 li > a{
 	color: white;
+}
+
+
+div.dataTables_wrapper div.dataTables_paginate {
+    text-align: left;
+}
+
+a.paginate_button {
+	cursor: pointer;
+}
+
+.SportFiltre{
+	width: 400px;
+	position: relative;
+	top:0px;
+	background: #0273D4;
+	color: white;
+	border-radius: 0px;
+}
+
+.navbar2{
+	background: #0288D4;
+	color: white;
+	border-radius: 0px;
+}
+.navbar2 > a{
+	color: white;
+}
+
+.navbar2 > .nav-item {
+	width: 100px;
+	text-align: center;
 }

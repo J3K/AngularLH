@@ -11,17 +11,48 @@
 
 
 <body ng-app="ngLiveHighlights" ng-controller="ngLHController as showCase">
-
-
-    <nav class="navbar navbar-light bg-faded">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="navbar navbar-light bg-faded">
+                <div class="navbar-inner">
+                    <a class="navbar-brand" href="#">{{ Title }}</a>
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="navbar2 navbar-inverse">
+                <div class="navbar-inner">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Football</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Basketball</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Tennis</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Other</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+<!--     <nav class="navbar navbar-light bg-faded">
         <a class="navbar-brand" href="#">{{ Title }}</a>
         <ul class="nav navbar-nav">
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Highlights / Goals</a>
-            </li>
+            
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
             </li>
@@ -31,7 +62,23 @@
             <button class="btn btn-success" type="submit">Search</button>
         </form>
     </nav>
-
+    <nav class="navbar2 navbar-light bg-faded SportFiltre">
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Football</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Basketball</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Tennis</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Other</a>
+            </li>
+        </ul>
+    </nav>
+ -->
 
     <!-- div masonry>
         <div class="masonry-brick">
@@ -42,9 +89,10 @@
         </div>
     </div -->
 
-    <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
+
+                <h2 class="text-center">Live Football Games</h2>
                 <!-- <table datatable="" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs"  class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                     <tr>
@@ -60,9 +108,9 @@
                     </tbody>
                 </table>
  -->    
-                <p class="text-danger">You clicked on: <strong>{{ showCase.message }}</strong></p>
+                <!-- <p class="text-danger">You clicked on: <strong>{{ showCase.message }}</strong></p> -->
 
-                <table datatable="" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs"  class="table table-striped table-bordered responsive" cellspacing="0" width="100%">
+                <table datatable="ng"  dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs"  class="table table-striped table-bordered responsive" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th class="text-center"><h4>League</h4></th>
@@ -71,6 +119,7 @@
                             <th class="text-center"><h4>Q</h4></th>
                             <th class="text-center"><h4>L</h4></th>
                             <th class="text-center min-phone-l"><h4>W</h4></th>
+                            <!-- <th class="text-center min-phone-l"><h4></h4></th> -->
                         </tr>
                     </thead>
                     <tfoot>
@@ -81,16 +130,40 @@
                         <th class="text-center"><h4>Q</h4></th>
                         <th class="text-center"><h4>L</h4></th>
                         <th class="text-center min-phone-l"><h4>W</h4></th>
+                        <!-- <th class="text-center min-phone-l"><h4></h4></th> -->
                     </tr>
                     </tfoot>
                     <tbody>
-                        <tr ng-repeat="Game in FootballGames" >
+                        <tr ng-repeat-start="Game in FootballGames" >
                             <td>{{ Game.League }}</td>
-                            <td>{{ Game.Time | date:'HH:mm Z' }}</td>
-                            <td>{{ Game.TeamAvsTeamB }}</td>
+                            <td>{{ Game.Time * 1000 | date:'HH:mm' }}</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-2 sm-hidden">
+                                        <img ng-src="http://livehighlights.net/{{ Game.logoTeamA }}" height="25" width="25"/>
+                                    </div>
+                                    <div class="col-md-10">{{ Game.TeamAvsTeamB | split:'-':0 }}</div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col-md-2 sm-hidden"><img ng-src="http://livehighlights.net/{{ Game.logoTeamB }}" height="25" width="25"/></div>
+                                    <div class="col-md-10">{{ Game.TeamAvsTeamB | split:'-':1 }}</div>
+                                </div>
+                            </td>
                             <td>{{ Game.Quality }}</td>
                             <td>{{ Game.Language }}</td>
-                            <td><button type="button" class="btn btn-primary">Watch</button></td>
+                            <td>
+                                <button type="button" class="btn btn-primary" ng-click="addRow(showCase.dtColumns,showCase.dtColumnDefs);links.expanded = !links.expanded">Watch</button>
+                            </td>
+                        </tr>
+                        <tr ng-if="links.expanded" ng-repeat-end="" >
+                            <td colspan="6">
+                                <div class="row">
+                                    <div class="col-md-4 text-center" ng-repeat="(key, value) in (Game.Links | splitOnly:',')">
+                                        <button type="button" class="btn btn-primary" ng-click="value">Link #{{ key }}</button>
+                                    <span ng-if="key == 2"><br/><br/></span>
+                                    </div>
+                                </div> 
+                            </td>
                         </tr>
                     </tbody>
                 </table>

@@ -2,7 +2,9 @@ angular.module('ngLiveHighlights', ['ui.bootstrap','wu.masonry','datatables']);
 
 jQuery(document).ready(function($) {
 	var navbar = $('.navbar');
+	var navbar2 = $('.SportFiltre');
 	        if (navbar.length) distance = navbar.offset().top;
+	        if (navbar2.length) distance2 = navbar2.offset().top;
 	    $window = $(window);
 
 	$window.scroll(function() {
@@ -13,5 +15,7 @@ jQuery(document).ready(function($) {
 	        navbar.removeClass('navbar-fixed-top');
 	        $("body").css("padding-top", "0px");
 	    }
+
+
 	});
 });
