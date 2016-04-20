@@ -12,15 +12,15 @@ angular
 
     function getFootballGames()	
     {
-        return $http.get('http://livehighlights.net/JSON/1/1', { cache: true});
+        return $http.get('http://livehighlights.net/JSON/1/1'/*, { cache: true}*/);
     }
     function getFootballHighlightsv1()  
     {
-        return $http.get('http://livehighlights.net/asasdasd.json', { cache: true});
+        return $http.get('http://cdn.livehighlights.net/content/web/Modules/Highlights'/*, { cache: true}*/);
     }
     function getFootballHighlightsv2()	
     {
-        return $http.get('http://cdn.livehighlights.net/content/web/Modules/HighlightsArena', { cache: true});
+        return $http.get('http://cdn.livehighlights.net/content/web/Modules/HighlightsArena'/*, { cache: true}*/);
     }
 
 
