@@ -36,20 +36,28 @@ angular
     });
 
     $scope.WatchGame = function (argument) {
-        // body...
-        console.log(argument);
-    }
-
-    $scope.ClickedLink = function(key){
-        console.log(key);
-
-        // console.log($scope.PlayerExpanded);
+        
         if(!$scope.PlayerExpanded)
         {
             $scope.PlayerExpanded = !$scope.PlayerExpanded;
             $scope.isHighlights = false;
         }
         else $scope.PlayerExpanded = true;
+
+
+        $scope.Links = argument;
+    }
+
+    $scope.ClickedLink = function(key){
+        // console.log(key);
+
+        // console.log($scope.PlayerExpanded);
+        // if(!$scope.PlayerExpanded)
+        // {
+        //     $scope.PlayerExpanded = !$scope.PlayerExpanded;
+        //     $scope.isHighlights = false;
+        // }
+        // else $scope.PlayerExpanded = true;
 
         $scope.PlayerCode = $sce.trustAsResourceUrl(key);
         // console.log($scope.PlayerExpanded);
@@ -84,14 +92,16 @@ angular
         // .withOption('stateSave', true)
         .withOption('pageLength', 15);
 
-    vm.dtColumnDefs0 = [
-        DTColumnDefBuilder.newColumnDef(0).withOption('width', '30%').notSortable(),
-        DTColumnDefBuilder.newColumnDef(1).withOption('width', '5%').notSortable(),
-        DTColumnDefBuilder.newColumnDef(2).withOption('width', '60%').notSortable(),
-        DTColumnDefBuilder.newColumnDef(3).withOption('width', '5%').notSortable(),
-        DTColumnDefBuilder.newColumnDef(4).withOption('width', '10%').notSortable(),
-        DTColumnDefBuilder.newColumnDef(5).withOption('width', '10%').notSortable()
-    ];    
+        vm.dtColumnDefs0 = [
+            DTColumnDefBuilder.newColumnDef(0).withOption('width', '30%').notSortable(),
+            DTColumnDefBuilder.newColumnDef(1).withOption('width', '5%').notSortable(),
+            DTColumnDefBuilder.newColumnDef(2).withOption('width', '60%').notSortable(),
+            DTColumnDefBuilder.newColumnDef(3).withOption('width', '5%').notSortable(),
+            DTColumnDefBuilder.newColumnDef(4).withOption('width', '10%').notSortable(),
+            DTColumnDefBuilder.newColumnDef(5).withOption('width', '10%').notSortable()
+        ];    
+   
+
 
     vm.dtOptions1 = DTOptionsBuilder.newOptions()
         .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl

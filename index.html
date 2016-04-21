@@ -35,7 +35,14 @@
 
         <div class="row ng-enter playerDiv" ng-if="PlayerExpanded">
             <div class="col-sm-12 text-center" style="min-height:520px;margin-top: 25px;" ng-if="!isHighlights">
-                <iframe ng-src="{{PlayerCode}}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <div class="row">
+                    <div class="col-md-2 text-center" style="margin-bottom: 5px;" ng-repeat="(key, value) in (Links | splitOnly:',')">
+                        <button type="button" class="btn btn-primary" ng-click="ClickedLink(value)">Link #{{ key }}</button>
+                    </div>
+                </div>       
+                <div class="row">
+                    <iframe ng-src="{{PlayerCode}}" style="margin-bottom: 10px;" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
             </div>
              <div class="col-sm-12 text-center" style="min-height:520px;margin-top: 25px;" ng-if="isHighlights">
                 <iframe ng-src="{{PlayerCode}}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -52,7 +59,7 @@
                             </div>      
                         </div>
                     </form>
-
+                {{ links.expanded }}
                 <table id="LiveFootballGamesTable" datatable="ng"  dt-options="showCase.dtOptions0" dt-column-defs="showCase.dtColumnDefs0" dt-columns="showCase.dtColumns0" dt-instance="showCase.dtInstance0"  class="table table-striped table-bordered responsive" cellspacing="0" width="100%">
                     <thead>
                         <tr>
@@ -62,7 +69,6 @@
                             <th class="text-center"><h4>Q</h4></th>
                             <th class="text-center"><h4>L</h4></th>
                             <th class="text-center min-phone-l"><h4>W</h4></th>
-                            <th class="text-center" ng-if="links.expanded" ><h4>s</h4></th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -73,11 +79,10 @@
                             <th class="text-center"><h4>Q</h4></th>
                             <th class="text-center"><h4>L</h4></th>
                             <th class="text-center min-phone-l"><h4>W</h4></th>
-                            <th class="text-center" ng-if="links.expanded" ><h4></h4>s</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr ng-repeat-start="Game in FootballGames | orderBy:sortType2 | orderBy:sortType | filter:searchGame" >
+                        <tr ng-repeat="Game in FootballGames | orderBy:sortType2 | orderBy:sortType | filter:searchGame" >
                             <td class="text-center">
                                 <font color="darkgreen">
                                     <strong>{{ Game.League }}</strong>
@@ -107,17 +112,7 @@
                                 </font>
                                 </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-primary" ng-click="links.expanded = !links.expanded">Watch</button>
-                            </td>
-                        </tr>
-                        <tr ng-if="links.expanded" ng-repeat-end="" >
-                            <td colspan="6">
-                                <div class="row">
-                                    <div class="col-md-4 text-center" ng-repeat="(key, value) in (Game.Links | splitOnly:',')">
-                                        <button type="button" class="btn btn-primary" ng-click="ClickedLink(value)">Link #{{ key }}</button>
-                                        <span ng-if="key == 2"><br/><br/></span>
-                                    </div>
-                                </div> 
+                                <button type="button" class="btn btn-primary" ng-click="WatchGame(Game.Links)">Watch</button>
                             </td>
                         </tr>
                     </tbody>
