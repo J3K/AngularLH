@@ -74,24 +74,6 @@ angular
 
     var vm = this;
 
-    vm.dtOptions1 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
-        .withOption('language', {"emptyTable": "<h4><img src=\"http://livehighlights.net/img/progress_bar.gif\" ></h4>"})
-        // .withOption('order', [1, 'desc'])
-        // .withOption('aaSorting', [ 2, 'asc' ])
-        // .withOption('stateSave', true)
-        .withOption('pageLength', 15);
-
-    vm.dtColumnDefs1 = [
-        DTColumnDefBuilder.newColumnDef(0).withOption('width', '10%').notSortable(),
-        DTColumnDefBuilder.newColumnDef(1).withOption('width', '50%').notSortable(),
-        DTColumnDefBuilder.newColumnDef(2).withOption('width', '20%').notSortable(),
-        DTColumnDefBuilder.newColumnDef(3).withOption('width', '20%').notSortable()
-        // DTColumnDefBuilder.newColumnDef(4).withOption('width', '20%').notSortable(),
-        // DTColumnDefBuilder.newColumnDef(5).withOption('width', '10%').notSortable()
-    ];      
-
-
 
     vm.dtOptions0 = DTOptionsBuilder.newOptions()
         .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
@@ -111,11 +93,29 @@ angular
         DTColumnDefBuilder.newColumnDef(5).withOption('width', '10%').notSortable()
     ];    
 
+    vm.dtOptions1 = DTOptionsBuilder.newOptions()
+        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
+        .withOption('language', {"emptyTable": "<h4><img src=\"http://livehighlights.net/img/progress_bar.gif\" ></h4>"})
+        // .withOption('order', [1, 'desc'])
+        // .withOption('aaSorting', [ 2, 'asc' ])
+        // .withOption('stateSave', true)
+        .withOption('pageLength', 15);
+
+    vm.dtColumnDefs1 = [
+        DTColumnDefBuilder.newColumnDef(0).withOption('width', '5%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(1).withOption('width', '60%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(2).withOption('width', '10%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(3).withOption('width', '20%').notSortable()
+        // DTColumnDefBuilder.newColumnDef(4).withOption('width', '20%').notSortable(),
+        // DTColumnDefBuilder.newColumnDef(5).withOption('width', '10%').notSortable()
+    ];      
+
+
 
     vm.dtOptions2 = DTOptionsBuilder.newOptions()
         .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
-        .withOption('language', {"emptyTable": "<h4><img src=\"http://livehighlights.net/img/progress_bar.gif\" ></h4>"})
-        // .withOption('order', [1, 'asc'])
+        .withOption('language', {"emptyTable": "<h4>asdasd</h4>"})
+        .withOption('order', [0, 'desc'])
         // .withOption('aaSorting', [ 2, 'asc' ])
         // .withOption('stateSave', true)
         .withOption('pageLength', 15);
