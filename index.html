@@ -33,11 +33,11 @@
             </div>
         </div>
 
-        <div class="row ng-enter" ng-if="PlayerExpanded">
-            <div class="col-sm-12 text-center" style="min-height:520px" ng-if="!isHighlights">
+        <div class="row ng-enter playerDiv" ng-if="PlayerExpanded">
+            <div class="col-sm-12 text-center" style="min-height:520px;margin-top: 25px;" ng-if="!isHighlights">
                 <iframe ng-src="{{PlayerCode}}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
-             <div class="col-sm-12 text-center" style="min-height:520px" ng-if="isHighlights">
+             <div class="col-sm-12 text-center" style="min-height:520px;margin-top: 25px;" ng-if="isHighlights">
                 <iframe ng-src="{{PlayerCode}}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
         </div>

@@ -7,6 +7,7 @@ body{
 .masonry-brick > h3 { font-size: 14px; }
 
 .navbar{
+	z-index: 66666;
 	height: 50px;
 	background: #0273D4;
 	color: white;
@@ -19,6 +20,12 @@ li > a{
 	color: white;
 }
 
+.playerDiv{
+	position: relative;
+	top: -20px;
+	z-index: 0;
+	background: #1995FF;
+}
 
 div.dataTables_wrapper div.dataTables_paginate {
         text-align: center;
