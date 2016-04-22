@@ -113,7 +113,7 @@ angular
 
 
     vm.dtOptions0 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
+        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>><'row'<'col-sm-12'p>>") // pitrfl
         .withOption('language', {"emptyTable": "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
         .withOption('order', [1, 'asc'])
         .withOption('scroller', {'loadingIndicator': true})
@@ -133,7 +133,7 @@ angular
 
 
     vm.dtOptions1 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
+        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>><'row'<'col-sm-12'p>>") // pitrfl
         .withOption('language', {"emptyTable": "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
         // .withOption('order', [1, 'desc'])
         // .withOption('aaSorting', [ 2, 'asc' ])
@@ -152,7 +152,7 @@ angular
 
 
     vm.dtOptions2 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
+        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>><'row'<'col-sm-12'p>>") // pitrfl
         .withOption('language', {"emptyTable": "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
         .withOption('order', [0, 'desc'])
         // .withOption('aaSorting', [ 2, 'asc' ])
