@@ -13,6 +13,7 @@ angular
     $scope.searchGame   = '';     // set the default search/filter term
     $scope.searchHighlightv1   = '';     // set the default search/filter term
     $scope.searchHighlightv2   = '';     // set the default search/filter term
+    $scope.ShowAdLinkSource = true;
 
 
     ngLHFactory.getFootballGames().success(function(FootballGames){
@@ -35,8 +36,23 @@ angular
         console.log(error);
     });
 
-    $scope.WatchGame = function (argument) {
-        
+    $scope.WatchGame = function (argument,VideoTitle) {
+
+        // $('#LiveGamesHighlights').openModal();
+        $scope.TITLE = VideoTitle;
+
+        $('#LiveGames').openModal({
+                dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                in_duration: 300, // Transition in duration
+                out_duration: 200, // Transition out duration
+                // ready: function() { alert('Ready'); }, // Callback for Modal open
+                complete: function() { $("#LiveGames").find('iframe').attr('src', ""); } // Callback for Modal close
+            }
+        );
+        console.log($scope.ShowAdLinkSource);
+        console.log($scope.ShowAdLinkSource);
+
         if(!$scope.PlayerExpanded)
         {
             $scope.PlayerExpanded = !$scope.PlayerExpanded;
@@ -58,14 +74,27 @@ angular
         //     $scope.isHighlights = false;
         // }
         // else $scope.PlayerExpanded = true;
-
         $scope.PlayerCode = $sce.trustAsResourceUrl(key);
         // console.log($scope.PlayerExpanded);
 
     }
 
-    $scope.ClickedHighlightsLink = function(key){
+    $scope.ClickedHighlightsLink = function(key,VideoTitle){
         console.log(key);
+
+        $scope.TITLE = VideoTitle;
+    
+
+
+        $('#Highlights').openModal({
+                dismissible: true, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                in_duration: 300, // Transition in duration
+                out_duration: 200, // Transition out duration
+                // ready: function() { alert('Ready'); }, // Callback for Modal open
+                complete: function() { $("#Highlights").find('iframe').attr('src', ""); } // Callback for Modal close
+            }
+        );
 
         // console.log($scope.PlayerExpanded);
         if(!$scope.PlayerExpanded)
@@ -75,7 +104,7 @@ angular
         }
         else $scope.PlayerExpanded = true;
 
-        $scope.PlayerCode = $sce.trustAsResourceUrl("http://cdn.livehighlights.net/content/web" + key);
+        $scope.HighlightsCode = $sce.trustAsResourceUrl("http://cdn.livehighlights.net/content/web" + key);
         // console.log($scope.PlayerExpanded);
 
     }
@@ -85,7 +114,7 @@ angular
 
     vm.dtOptions0 = DTOptionsBuilder.newOptions()
         .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
-        .withOption('language', {"emptyTable": "<h4><img src=\"http://livehighlights.net/img/progress_bar.gif\" ></h4>"})
+        .withOption('language', {"emptyTable": "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
         .withOption('order', [1, 'asc'])
         .withOption('scroller', {'loadingIndicator': true})
         // .withOption('aaSorting', [ 2, 'asc' ])
@@ -93,19 +122,19 @@ angular
         .withOption('pageLength', 15);
 
         vm.dtColumnDefs0 = [
-            DTColumnDefBuilder.newColumnDef(0).withOption('width', '30%').notSortable(),
+            DTColumnDefBuilder.newColumnDef(0).withOption('width', '20%').notSortable(),
             DTColumnDefBuilder.newColumnDef(1).withOption('width', '5%').notSortable(),
-            DTColumnDefBuilder.newColumnDef(2).withOption('width', '60%').notSortable(),
+            DTColumnDefBuilder.newColumnDef(2).withOption('width', '50%').notSortable(),
             DTColumnDefBuilder.newColumnDef(3).withOption('width', '5%').notSortable(),
-            DTColumnDefBuilder.newColumnDef(4).withOption('width', '10%').notSortable(),
-            DTColumnDefBuilder.newColumnDef(5).withOption('width', '10%').notSortable()
+            DTColumnDefBuilder.newColumnDef(4).withOption('width', '5%').notSortable(),
+            DTColumnDefBuilder.newColumnDef(5).withOption('width', '35%').notSortable()
         ];    
    
 
 
     vm.dtOptions1 = DTOptionsBuilder.newOptions()
         .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
-        .withOption('language', {"emptyTable": "<h4><img src=\"http://livehighlights.net/img/progress_bar.gif\" ></h4>"})
+        .withOption('language', {"emptyTable": "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
         // .withOption('order', [1, 'desc'])
         // .withOption('aaSorting', [ 2, 'asc' ])
         // .withOption('stateSave', true)
@@ -124,7 +153,7 @@ angular
 
     vm.dtOptions2 = DTOptionsBuilder.newOptions()
         .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>>") // pitrfl
-        .withOption('language', {"emptyTable": "<h4>asdasd</h4>"})
+        .withOption('language', {"emptyTable": "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
         .withOption('order', [0, 'desc'])
         // .withOption('aaSorting', [ 2, 'asc' ])
         // .withOption('stateSave', true)
