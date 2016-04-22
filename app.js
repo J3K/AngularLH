@@ -24,3 +24,4 @@ angular.module('ngLiveHighlights', ['datatables']);
     $('ul.tabs').tabs();
   });
       
+      

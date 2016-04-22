@@ -38,6 +38,8 @@ angular
 
     $scope.WatchGame = function (argument,VideoTitle) {
 
+        // console.log(argument);
+
         // $('#LiveGamesHighlights').openModal();
         $scope.TITLE = VideoTitle;
 
@@ -46,7 +48,7 @@ angular
                 opacity: .5, // Opacity of modal background
                 in_duration: 300, // Transition in duration
                 out_duration: 200, // Transition out duration
-                // ready: function() { alert('Ready'); }, // Callback for Modal open
+                ready: function() { $('ul.tabs').tabs('select_tab', 'Link1'); }, // Callback for Modal open
                 complete: function() { $("#LiveGames").find('iframe').attr('src', ""); } // Callback for Modal close
             }
         );
@@ -80,18 +82,17 @@ angular
     }
 
     $scope.ClickedHighlightsLink = function(key,VideoTitle){
-        console.log(key);
+        
+        // console.log(key);
 
         $scope.TITLE = VideoTitle;
-    
-
 
         $('#Highlights').openModal({
                 dismissible: true, // Modal can be dismissed by clicking outside of the modal
                 opacity: .5, // Opacity of modal background
                 in_duration: 300, // Transition in duration
                 out_duration: 200, // Transition out duration
-                // ready: function() { alert('Ready'); }, // Callback for Modal open
+                ready: function() { alert('Ready'); $('ul.tabs').tabs('select_tab', '#Link0'); }, // Callback for Modal open
                 complete: function() { $("#Highlights").find('iframe').attr('src', ""); } // Callback for Modal close
             }
         );
@@ -113,7 +114,7 @@ angular
 
 
     vm.dtOptions0 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>><'row'<'col-sm-12'p>>") // pitrfl
+        .withDOM("<'row'<'col s12'p>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
         .withOption('language', {"emptyTable": "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
         .withOption('order', [1, 'asc'])
         .withOption('scroller', {'loadingIndicator': true})
@@ -133,7 +134,7 @@ angular
 
 
     vm.dtOptions1 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>><'row'<'col-sm-12'p>>") // pitrfl
+        .withDOM("<'row'<'col s12'p>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
         .withOption('language', {"emptyTable": "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
         // .withOption('order', [1, 'desc'])
         // .withOption('aaSorting', [ 2, 'asc' ])
@@ -152,7 +153,7 @@ angular
 
 
     vm.dtOptions2 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col-sm-12'p>><'row'<'col-sm-12't>><'row'<'col-sm-12'p>>") // pitrfl
+        .withDOM("<'row'<'col s12'p>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
         .withOption('language', {"emptyTable": "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
         .withOption('order', [0, 'desc'])
         // .withOption('aaSorting', [ 2, 'asc' ])

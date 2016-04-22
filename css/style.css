@@ -54,12 +54,24 @@ width:100px;
 text-align:center;
 }
 
+.modal.bottom-sheet {
+    max-height: 80%;
+}
+
 .row {
 margin-bottom:0;
 }
 
 td,th {
 padding:10px 5px;
+}
+
+.iframePlayer{
+	padding-top: 10px;
+}
+
+#iframePlayer{
+	padding-top: 10px;
 }
 
 .ng-enter {
