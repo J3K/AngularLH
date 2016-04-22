@@ -61,15 +61,15 @@
                                 <!-- <li ng-repeat-start="(key, value) in (Links | splitOnly:',')" class="tab col s3" ng-if="key == 0">
                                     <a href="http://go.ad2up.com/afu.php?id=624727" target="_blank">Link #{{ key }}</a>
                                 </li> -->
-                                <li id="Link{{ key + 1 }}"  ng-repeat="(key, value) in (Links | splitOnly:',')" class="tab col s3" ng-if="key != 6">
+                                <li ng-repeat="(key, value) in (Links | splitOnly:',')" class="tab col s3">
                                     <!-- <a href="#Link{{ key + 1 }}" ng-click="ClickedLink(value)" class="active" ng-if="key == 0">Link #{{ key + 1 }}</a> -->
-                                    <a  id="Link{{ key + 1 }}" href="#Link{{ key + 1 }}" ng-click="ClickedLink(value)">Link #{{ key + 1 }}</a>
+                                    <a id="Link{{ key + 1 }}" href="#Link{{ key + 1 }}" ng-click="ClickedLink(value)">Link #{{ key + 1 }}</a>
                                     <!-- <a href="{{ value }}" ng-if="key == 7">Link #{{ key + 1 }}</a> -->
                                 </li>
                             </ul>
                         </div>
                         <div class="col s12 center-align valign iframePlayer" style="padding-top: 10px;">
-                            <iframe ng-src="{{ PlayerCode }}" id="{{ key + 1 }}" id="iframePlayer" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            <iframe ng-src="{{ PlayerCode }}" id="iframePlayer" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         </div>
                     </div>      
                 </div>
@@ -98,7 +98,7 @@
 
     <div class="row">
         <div class="col m6">
-            <h4 class="centered valign">Live Football Games</h4>
+            <h4 class="center-align valign">Live Football Games</h4>
                 <form>
                     <div class="row">
                         <div class="input-field col s12">
@@ -169,7 +169,7 @@
 
         </div>
         <div class="col m3">
-            <h4 class="centered valign">Highlights / Goals v1</h4>
+            <h4 class="center-align valign">Highlights / Goals v1</h4>
 
                 <form>
                     <div class="row">
@@ -222,8 +222,8 @@
                         </td>
                         <td>
                             <!-- <button type="button" class="btn btn-primary btn-xs" ng-click="ClickedHighlightsLink(Highlight.link)">Watch</button> -->
-                            <a class="waves-effect waves-light btn modal-trigger" ng-click="ClickedHighlightsLink(Highlight.link,Highlight.hometeam + ' ' + Highlight.score + ' ' + Highlight.awayteam)" href="#Highlights">
-                                <i class="material-icons right">play_arrow</i>
+                            <a class="waves-effect waves-light btn  btn-small modal-trigger" ng-click="ClickedHighlightsLink(Highlight.link,Highlight.hometeam + ' ' + Highlight.score + ' ' + Highlight.awayteam)" href="#Highlights">
+                                <i class="material-icons left">play_arrow</i>Watch
                             </a>
                         </td>
                     </tr>
@@ -234,7 +234,7 @@
 
         <div class="col m3">
 
-            <h4 class="centered valign">Highlights / Goals v2</h4>
+            <h4 class="center-align valign">Highlights / Goals v2</h4>
                 <form>
                     <div class="row">
                         <div class="input-field col s12">
@@ -258,7 +258,7 @@
                         <td>
                             <!-- <button type="button" class="btn btn-primary btn-xs" ng-click="ClickedHighlightsLink(Highlight.link)">Watch</button> -->
                             <a class="waves-effect waves-light btn modal-trigger" ng-click="ClickedHighlightsLink(Highlight.link,Highlight.game)" href="#Highlights">
-                                <i class="material-icons right">play_arrow</i>
+                                <i class="material-icons left">play_arrow</i>Watch
                             </a>
                         </td>
                     </tr>

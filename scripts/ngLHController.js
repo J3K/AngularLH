@@ -48,7 +48,7 @@ angular
                 opacity: .5, // Opacity of modal background
                 in_duration: 300, // Transition in duration
                 out_duration: 200, // Transition out duration
-                ready: function() { $('ul.tabs').tabs('select_tab', 'Link1'); }, // Callback for Modal open
+                ready: function() { $('ul.tabs').tabs('select_tab', 'Link7'); }, // Callback for Modal open
                 complete: function() { $("#LiveGames").find('iframe').attr('src', ""); } // Callback for Modal close
             }
         );
@@ -92,7 +92,7 @@ angular
                 opacity: .5, // Opacity of modal background
                 in_duration: 300, // Transition in duration
                 out_duration: 200, // Transition out duration
-                ready: function() { alert('Ready'); $('ul.tabs').tabs('select_tab', '#Link0'); }, // Callback for Modal open
+                ready: function() { $('ul.tabs').tabs('select_tab', '#Link0'); }, // Callback for Modal open
                 complete: function() { $("#Highlights").find('iframe').attr('src', ""); } // Callback for Modal close
             }
         );
@@ -112,6 +112,19 @@ angular
 
     var vm = this;
 
+    console.log($scope.FootballGames);
+    if(!$scope.FootballGames) 
+    {
+        vm.dtOptions0 = DTOptionsBuilder.newOptions()
+            .withDOM("<'row'<'col s12'p>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+            .withOption('language', {"emptyTable": "<div class=\"card-panel teal lighten-2\"><div class=\"center-align\"> No game right now </div></div>"})
+            .withOption('order', [1, 'asc'])
+            .withOption('scroller', {'loadingIndicator': true})
+            // .withOption('aaSorting', [ 2, 'asc' ])
+            // .withOption('stateSave', true)
+            .withOption('pageLength', 15);
+    }
+    else{
 
     vm.dtOptions0 = DTOptionsBuilder.newOptions()
         .withDOM("<'row'<'col s12'p>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
@@ -122,6 +135,7 @@ angular
         // .withOption('stateSave', true)
         .withOption('pageLength', 15);
 
+    }   
         vm.dtColumnDefs0 = [
             DTColumnDefBuilder.newColumnDef(0).withOption('width', '25%').notSortable(),
             DTColumnDefBuilder.newColumnDef(1).withOption('width', '5%').notSortable(),

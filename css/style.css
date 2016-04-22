@@ -112,3 +112,20 @@ color:#fff;
 table.dataTable thead .sorting_asc:after,table.dataTable thead .sorting_desc:after {
 content:"";
 }
+
+
+.btn, .btn-large, .btn-flat {
+		width: 80px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0;
+}
+
+.btn i, .btn-large i, .btn-floating i, .btn-large i, .btn-flat i {
+    font-size: 15px;
+}
+
+i.left {
+    /*float: left;*/
+    margin-right: 0; 
+}
