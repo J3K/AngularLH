@@ -122,12 +122,12 @@ angular
         .withOption('pageLength', 15);
 
         vm.dtColumnDefs0 = [
-            DTColumnDefBuilder.newColumnDef(0).withOption('width', '20%').notSortable(),
+            DTColumnDefBuilder.newColumnDef(0).withOption('width', '25%').notSortable(),
             DTColumnDefBuilder.newColumnDef(1).withOption('width', '5%').notSortable(),
-            DTColumnDefBuilder.newColumnDef(2).withOption('width', '50%').notSortable(),
-            DTColumnDefBuilder.newColumnDef(3).withOption('width', '5%').notSortable(),
-            DTColumnDefBuilder.newColumnDef(4).withOption('width', '5%').notSortable(),
-            DTColumnDefBuilder.newColumnDef(5).withOption('width', '35%').notSortable()
+            DTColumnDefBuilder.newColumnDef(2).withOption('width', '40%').notSortable(),
+            DTColumnDefBuilder.newColumnDef(3).withOption('width', '10%').notSortable(),
+            DTColumnDefBuilder.newColumnDef(4).withOption('width', '20%').notSortable(),
+            // DTColumnDefBuilder.newColumnDef(5).withOption('width', '35%').notSortable()
         ];    
    
 

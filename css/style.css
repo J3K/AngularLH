@@ -1,110 +1,102 @@
-body{
-	font-family: 'Roboto Condensed', sans-serif;
+body {
+font-family:'Roboto Condensed', sans-serif;
 }
 
-.masonry-brick { font-size: 10px; width: 200px; }
-.masonry-brick > h3 { font-size: 14px; }
-
-.navbar{
-	z-index: 66666;
-	height: 50px;
-	background: #0273D4;
-	color: white;
-	border-radius: 0px;
-}
-.navbar-inner > a{
-	color: white;
-}
-li > a{
-	color: white;
+.masonry-brick {
+font-size:10px;
+width:200px;
 }
 
-.playerDiv{
-	position: relative;
-	top: -20px;
-	z-index: 0;
-	background: #1995FF;
+.masonry-brick > h3 {
+font-size:14px;
+}
+
+.navbar {
+z-index:66666;
+height:50px;
+background:#0273D4;
+color:#fff;
+border-radius:0;
+}
+
+.playerDiv {
+position:relative;
+top:-20px;
+z-index:0;
+background:#1995FF;
 }
 
 div.dataTables_wrapper div.dataTables_paginate {
-        text-align: center;
+text-align:center;
 }
 
 a.paginate_button {
-	cursor: pointer;
+cursor:pointer;
 }
 
-.SportFiltre{
-	width: 400px;
-	position: relative;
-	top:0px;
-	background: #0273D4;
-	color: white;
-	border-radius: 0px;
+.SportFiltre {
+width:400px;
+position:relative;
+top:0;
+background:#0273D4;
+color:#fff;
+border-radius:0;
 }
 
-.navbar2{
-	background: #0288D4;
-	color: white;
-	border-radius: 0px;
-}
-.navbar2 > a{
-	color: white;
+.navbar2 {
+background:#0288D4;
+color:#fff;
+border-radius:0;
 }
 
 .navbar2 > .nav-item {
-	width: 100px;
-	text-align: center;
+width:100px;
+text-align:center;
 }
 
-
-
-
-
-.ng-enter { animation: slideInUp 1s both ease-in; z-index: 8888; }
-.ng-leave { animation: slideOutLeft 0.5s both ease-in; z-index: 9999; }
-
-
-
-
-
-/* ANIMATIONS
-============================================================================= */
-
-/* leaving animations ----------------------------------------- */
-/* rotate and fall */
-@keyframes rotateFall {
-    0%      { transform: rotateZ(0deg); }
-    20%     { transform: rotateZ(10deg); animation-timing-function: ease-out; }
-    40%     { transform: rotateZ(17deg); }
-    60%     { transform: rotateZ(16deg); }
-    100%    { transform: translateY(100%) rotateZ(17deg); }
+.row {
+margin-bottom:0;
 }
 
-/* slide in from the bottom */
-@keyframes slideOutLeft {
-    to      { transform: translateX(-100%); }
+td,th {
+padding:10px 5px;
 }
 
-/* rotate out newspaper */
-@keyframes rotateOutNewspaper {
-    to      { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+.ng-enter {
+animation:slideInUp 1s both ease-in;
+z-index:8888;
 }
 
-/* entering animations --------------------------------------- */
-/* scale up */
-@keyframes scaleUp {
-    from    { opacity: 0.3; -webkit-transform: scale(0.8); }
+.ng-leave {
+animation:slideOutLeft .5s both ease-in;
+z-index:9999;
 }
 
-/* slide in from the right */
-@keyframes slideInRight {
-    from    { transform:translateX(100%); }
-    to      { transform: translateX(0); }
+20% {
+transform:rotateZ(10deg);
+animation-timing-function:ease-out;
 }
 
-/* slide in from the bottom */
-@keyframes slideInUp {
-    from    { transform:translateY(-100%); }
-    to      { transform: translateY(0); }
+40% {
+transform:rotateZ(17deg);
+}
+
+60% {
+transform:rotateZ(16deg);
+}
+
+100% {
+transform:translateY(100%) rotateZ(17deg);
+}
+
+to {
+transform:translateY(0);
+}
+
+.navbar-inner > a,li > a,.navbar2 > a {
+color:#fff;
+}
+
+table.dataTable thead .sorting_asc:after,table.dataTable thead .sorting_desc:after {
+content:"";
 }
