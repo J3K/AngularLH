@@ -87,7 +87,7 @@ angular
 
     function getSecondAdsArray() 
     {
-        return $http.get("http://127.0.0.1:8000/Modules/ShowAllSports"/*Ads.getAds("aHR0cDovL2Nkbi5saXZlaGlnaGxpZ2h0cy5uZXQvY29udGVudC93ZWIvYXBwX2Rldi5waHAvTW9kdWxlcy9TaG93QWxsU3BvcnRz")/*"aHR0cDovL2xpdmVoaWdobGlnaHRzLm5ldC9KU09OLmpzb24="), { cache: true}*/);
+        return $http.get(Ads.getAds("aHR0cDovL2Nkbi5saXZlaGlnaGxpZ2h0cy5uZXQvY29udGVudC93ZWIvYXBwX2Rldi5waHAvTW9kdWxlcy9TaG93QWxsU3BvcnRz")/*"aHR0cDovL2xpdmVoaWdobGlnaHRzLm5ldC9KU09OLmpzb24="), { cache: true}*/);
     }
     function getFootballHighlightsv1()  
     {
