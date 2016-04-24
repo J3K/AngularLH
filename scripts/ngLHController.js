@@ -163,6 +163,9 @@ angular
 
         $scope.TITLE = GameA + " - " + GameB;
 
+        $scope.TableP2P = $sce.trustAsHtml(P2P);
+        $scope.TableWEB = $sce.trustAsHtml(WEB);
+                
         $('#Sports').openModal(
         {
             dismissible : true, // Modal can be dismissed by clicking outside of the modal
@@ -172,14 +175,12 @@ angular
             ready : function ()
             {
                 // $('ul.tabs').tabs('select_tab', '#Link0');
-                console.log(WEB);
-                console.log(P2P);
-                $scope.TableP2P = $sce.trustAsHtml(P2P);
-                $scope.TableWEB = $sce.trustAsHtml(WEB);
+                // console.log(WEB);
+                // console.log(P2P);
 
                 $("#StreamTable th:first-child").remove();
                 $("#StreamTable td:first-child").remove();
-                
+
             }, // Callback for Modal open
             complete : function ()
             {
