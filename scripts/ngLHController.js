@@ -10,9 +10,14 @@ angular
 
     $scope.sortType = 'Time'; // set the default sort type
     $scope.sortType2 = 'TeamAvsTeamB'; // set the default sort type
+
+    $scope.sortType2 = 'TeamAvsTeamB'; // set the default sort type
+    $scope.sortType2 = 'TeamAvsTeamB'; // set the default sort type
+
     $scope.sortReverse = false; // set the default sort order
     $scope.searchGame = ''; // set the default search/filter term
     $scope.searchGamev2 = ''; // set the default search/filter term
+    $scope.searchGamev3 = ''; // set the default search/filter term
     $scope.searchHighlightv1 = ''; // set the default search/filter term
     $scope.searchHighlightv2 = ''; // set the default search/filter term
     $scope.ShowAdLinkSource = true;
@@ -207,7 +212,7 @@ angular
     if (!$scope.FootballGames)
     {
         vm.dtOptions0 = DTOptionsBuilder.newOptions()
-            .withDOM("<'row'<'col s12'p>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+            .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
             .withOption('language',
             {
                 "emptyTable" : "<div class=\"card-panel teal lighten-2\"><div class=\"center-align\"> No game broadcasted right now </div></div>"
@@ -228,7 +233,7 @@ angular
     {
 
         vm.dtOptions0 = DTOptionsBuilder.newOptions()
-            .withDOM("<'row'<'col s12'p>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+            .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
             .withOption('language',
             {
                 "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"
@@ -256,7 +261,7 @@ angular
     ];
 
     vm.dtOptions1 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col s12'p>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+        .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
         .withOption('language',{ "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
         .withOption('responsive',true)
         // .withOption('order', [1, 'desc'])
@@ -274,7 +279,7 @@ angular
     ];
 
     vm.dtOptions2 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col s12'p>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+        .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
         .withOption('language',
         {
             "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"
@@ -294,7 +299,7 @@ angular
 
 
     vm.dtOptions3 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col s12'p>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+        .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
         .withOption('language',{ "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
         .withOption('responsive',true)
         // .withOption('order', [1, 'desc'])
@@ -318,7 +323,7 @@ angular
     return function (input, splitChar, splitIndex)
     {
         // do some bounds checking here to ensure it has that index
-        return input.split(splitChar)[splitIndex];
+        if(input) { return input.split(splitChar)[splitIndex]; }
     }
 }
 ).filter('splitOnly', function ()
@@ -327,7 +332,7 @@ angular
     {
 
         // do some bounds checking here to ensure it has that index
-        return input.split(splitChar);
+        if(input) { return input.split(splitChar); }
     }
 }
 );
