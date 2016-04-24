@@ -176,6 +176,10 @@ angular
                 console.log(P2P);
                 $scope.TableP2P = $sce.trustAsHtml(P2P);
                 $scope.TableWEB = $sce.trustAsHtml(WEB);
+
+                $("#StreamTable th:first-child").remove();
+                $("#StreamTable td:first-child").remove();
+                
             }, // Callback for Modal open
             complete : function ()
             {

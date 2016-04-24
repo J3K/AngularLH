@@ -20,6 +20,8 @@ angular.module('ngLiveHighlights', ['datatables','angularMoment','ngSanitize']);
 // 	});
 // });
 
+
+
  $(document).ready(function(){
     $('ul.tabs').tabs();
   });
