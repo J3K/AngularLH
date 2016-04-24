@@ -136,3 +136,12 @@ i.left {
     /*float: left;*/
     margin-right: 0; 
 }
+
+
+table.highlight>tbody>tr{
+  height: 10px;
+}
+
+table.dataTable tbody td.v3{
+    padding: 0 18px;
+}

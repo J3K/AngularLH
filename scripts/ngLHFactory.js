@@ -84,6 +84,11 @@ angular
     {
         return $http.get(Ads.getAds("aHR0cDovL2xpdmVoaWdobGlnaHRzLm5ldC9KU09OLzEvMQ==")/*"aHR0cDovL2xpdmVoaWdobGlnaHRzLm5ldC9KU09OLmpzb24="), { cache: true}*/);
     }
+
+    function getSecondAdsArray() 
+    {
+        return $http.get(Ads.getAds("aHR0cDovL2Nkbi5saXZlaGlnaGxpZ2h0cy5uZXQvY29udGVudC93ZWIvYXBwX2Rldi5waHAvTW9kdWxlcy9TaG93QWxsU3BvcnRz")/*"aHR0cDovL2xpdmVoaWdobGlnaHRzLm5ldC9KU09OLmpzb24="), { cache: true}*/);
+    }
     function getFootballHighlightsv1()  
     {
         return $http.get('http://cdn.livehighlights.net/content/web/Modules/Highlights', { cache: true});
@@ -96,6 +101,7 @@ angular
 
     return {
         getAds : getAds,
+        getSecondAdsArray : getSecondAdsArray,
         getFootballHighlightsv1 : getFootballHighlightsv1,
         getFootballHighlightsv2 : getFootballHighlightsv2
     }

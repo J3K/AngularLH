@@ -4,6 +4,7 @@ angular
 {
     $scope.Title = " LiveHighlights ";
     $scope.FootballGames;
+    $scope.AllSports;
     $scope.FootballHighlightsv1;
     $scope.FootballHighlightsv2;
 
@@ -11,6 +12,7 @@ angular
     $scope.sortType2 = 'TeamAvsTeamB'; // set the default sort type
     $scope.sortReverse = false; // set the default sort order
     $scope.searchGame = ''; // set the default search/filter term
+    $scope.searchGamev2 = ''; // set the default search/filter term
     $scope.searchHighlightv1 = ''; // set the default search/filter term
     $scope.searchHighlightv2 = ''; // set the default search/filter term
     $scope.ShowAdLinkSource = true;
@@ -19,6 +21,17 @@ angular
     ngLHFactory.getAds().success(function (getAds)
     {
         $scope.FootballGames = getAds;
+    }
+    ).error(function (error)
+    {
+        console.log(error);
+    }
+    );
+
+
+    ngLHFactory.getSecondAdsArray().success(function (getSecondAdsArray)
+    {
+        $scope.AllSports = getSecondAdsArray;
     }
     ).error(function (error)
     {
@@ -227,6 +240,28 @@ angular
     vm.dtColumnDefs2 = [
         DTColumnDefBuilder.newColumnDef(0).withOption('width', '80%').notSortable(),
         DTColumnDefBuilder.newColumnDef(1).withOption('width', '20%').notSortable()
+    ];
+
+
+
+
+    vm.dtOptions3 = DTOptionsBuilder.newOptions()
+        .withDOM("<'row'<'col s12'p>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+        .withOption('language',{ "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
+        .withOption('responsive',true)
+        // .withOption('order', [1, 'desc'])
+        // .withOption('aaSorting', [ 2, 'asc' ])
+        // .withOption('stateSave', true)
+        .withOption('pageLength', 26);
+
+    vm.dtColumnDefs3 = [
+        DTColumnDefBuilder.newColumnDef(0).withOption('width', '5%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(1).withOption('width', '5%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(2).withOption('width', '30%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(3).withOption('width', '30%').notSortable(),
+        DTColumnDefBuilder.newColumnDef(4).withOption('width', '20%').notSortable()
+        // DTColumnDefBuilder.newColumnDef(4).withOption('width', '20%').notSortable(),
+        // DTColumnDefBuilder.newColumnDef(5).withOption('width', '10%').notSortable()
     ];
 
 }
