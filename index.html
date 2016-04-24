@@ -181,12 +181,12 @@
                 </tfoot>
                 <tbody>
                     <tr ng-repeat="Game in FootballGames | orderBy:sortType2 | orderBy:sortType" >
-                        <td class="left-align valign">
+                        <td class="left-align valign v2">
                             <font color="darkgreen">
                                 <strong>{{ Game.League }}</strong>
                             </font>
                         </td>
-                        <td class="centered valign">
+                        <td class="centered valign v2">
                             <!-- ng-if="(Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm') <= (date | amDateFormat:'HH:mm');HideTime=true" -->
                             <b>{{ Game.Time * 1000 | amDateFormat:'HH:mm' }}</b>
 
@@ -207,7 +207,7 @@
                             <!-- <p>{{   (parseInt(Game.Time) + 7200 ) | date:'HH:mm'  }}</p> -->
                             <!-- <p>{{   (parseDouble(Game.Time))   }}</p> --> 
                         </td>
-                        <td class="centered valign">
+                        <td class="centered valign v2">
                             <div class="row">
                                 <div class="col m2 sm-hidden">
                                     <img ng-src="http://livehighlights.net/{{ Game.logoTeamA }}" height="25" width="25"/>
@@ -220,13 +220,13 @@
                             </div>
                         </td>
 
-                        <td class="centered valign">
+                        <td class="centered valign v2">
                             <font color="darkblue">
-                                <p class="center-align" ><strong>{{ Game.Quality }}</strong></p>
-                                <p class="center-align" ><strong>{{ Game.Language }}</strong></p>
+                                <p class="center-align" ><strong>{{ Game.Quality }}</strong>
+                                <strong>{{ Game.Language }}</strong></p>
                             </font>
                         </td>
-                        <td class="centered valign">  
+                        <td class="center-align  valign v2">  
                             <a class="waves-effect waves-light btn modal-trigger" ng-click="WatchGame(Game.Links,Game.TeamAvsTeamB)" href="#LiveGames">
                                 <i class="material-icons left">play_arrow</i>Watch
                             </a>
@@ -258,7 +258,7 @@
                         <th data-field="Watch" class="center-align valign"><h6>W</h6></th>
                     </tr>
                 </thead>
-                
+
                 <tfoot>
                     <tr>
                         <th data-field="DateTime" class="center-align valign"><h6>DateTime</h6></th>

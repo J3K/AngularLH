@@ -215,7 +215,8 @@ angular
             .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
             .withOption('language',
             {
-                "emptyTable" : "<div class=\"card-panel teal lighten-2\"><div class=\"center-align\"> No game broadcasted right now </div></div>"
+                "emptyTable" : "<div class=\"card-panel teal lighten-2\"><div class=\"center-align\"> No game broadcasted right now </div></div>",
+                "searchPlaceholder" : " League,Time,Teams and Language"
             }
             )
             .withOption('order', [1, 'asc'])
@@ -236,7 +237,8 @@ angular
             .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
             .withOption('language',
             {
-                "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"
+                "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>",
+                "searchPlaceholder" : " League,Time,Teams and Language"
             }
             )
             .withOption('order', [1, 'asc'])
@@ -262,7 +264,9 @@ angular
 
     vm.dtOptions1 = DTOptionsBuilder.newOptions()
         .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
-        .withOption('language',{ "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
+        .withOption('language',{ "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>",
+            "searchPlaceholder" : " Teams and Scores"
+        })
         .withOption('responsive',true)
         // .withOption('order', [1, 'desc'])
         // .withOption('aaSorting', [ 2, 'asc' ])
@@ -282,7 +286,8 @@ angular
         .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
         .withOption('language',
         {
-            "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"
+            "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>",
+            "searchPlaceholder" : " League,Time,Teams and Scores"
         }
         )
         .withOption('order', [0, 'desc'])
@@ -300,12 +305,12 @@ angular
 
     vm.dtOptions3 = DTOptionsBuilder.newOptions()
         .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
-        .withOption('language',{ "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>"})
+        .withOption('language',{ "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>", "searchPlaceholder" : " League,Time,Teams and Language"})
         .withOption('responsive',true)
         // .withOption('order', [1, 'desc'])
         // .withOption('aaSorting', [ 2, 'asc' ])
         // .withOption('stateSave', true)
-        .withOption('pageLength', 26);
+        .withOption('pageLength', 18);
 
     vm.dtColumnDefs3 = [
         DTColumnDefBuilder.newColumnDef(0).withOption('width', '5%').notSortable(),
