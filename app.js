@@ -1,4 +1,4 @@
-angular.module('ngLiveHighlights', ['datatables','angularMoment']);
+angular.module('ngLiveHighlights', ['datatables','angularMoment','ngSanitize']);
 
 // jQuery(document).ready(function($) {
 // 	var navbar = $('.navbar');

@@ -153,6 +153,49 @@ angular
 
     }
 
+
+
+
+    $scope.ClickedSportLink = function (key, GameA,GameB,WEB,P2P)
+    {
+
+        // console.log(key);
+
+        $scope.TITLE = GameA + " - " + GameB;
+
+        $('#Sports').openModal(
+        {
+            dismissible : true, // Modal can be dismissed by clicking outside of the modal
+            opacity : .5, // Opacity of modal background
+            in_duration : 300, // Transition in duration
+            out_duration : 200, // Transition out duration
+            ready : function ()
+            {
+                // $('ul.tabs').tabs('select_tab', '#Link0');
+                console.log(WEB);
+                console.log(P2P);
+                $scope.TableP2P = $sce.trustAsHtml(P2P);
+                $scope.TableWEB = $sce.trustAsHtml(WEB);
+            }, // Callback for Modal open
+            complete : function ()
+            {
+                $("#Sports").find('iframe').attr('src', "");
+            } // Callback for Modal close
+        }
+        );
+
+        // console.log($scope.PlayerExpanded);
+        if (!$scope.PlayerExpanded)
+        {
+            $scope.PlayerExpanded = !$scope.PlayerExpanded;
+        }
+        else
+            $scope.PlayerExpanded = true;
+
+        // console.log($scope.PlayerExpanded);
+
+    }
+
     var vm = this;
 
     // console.log($scope.FootballGames);
