@@ -1,6 +1,6 @@
 angular
 .module('ngLiveHighlights')
-.controller('ngLHController', function ($scope, $sce, ngLHFactory, DTOptionsBuilder, DTColumnBuilder, DTColumnDefBuilder)
+.controller('ngLHController', function ($scope, $sce, AdsEngine, DTOptionsBuilder, DTColumnBuilder, DTColumnDefBuilder)
 {
     $scope.Title = " LiveHighlights ";
     $scope.FootballGames;
@@ -23,7 +23,7 @@ angular
     $scope.ShowAdLinkSource = true;
     $scope.date = new Date().getTime();
 
-    ngLHFactory.getAds().success(function (getAds)
+    AdsEngine.getAds().success(function (getAds)
     {
         $scope.FootballGames = getAds;
     }
@@ -34,7 +34,7 @@ angular
     );
 
 
-    ngLHFactory.getSecondAdsArray().success(function (getSecondAdsArray)
+    AdsEngine.getSecondAdsArray().success(function (getSecondAdsArray)
     {
         $scope.AllSports = getSecondAdsArray;
     }
@@ -44,7 +44,7 @@ angular
     }
     );
 
-    ngLHFactory.getFootballHighlightsv1().success(function (FootballHighlightsv1)
+    AdsEngine.getFootballHighlightsv1().success(function (FootballHighlightsv1)
     {
         $scope.FootballHighlightsv1 = FootballHighlightsv1;
         // console.log(FootballHighlightsv1.length);
@@ -55,7 +55,7 @@ angular
     }
     );
 
-    ngLHFactory.getFootballHighlightsv2().success(function (FootballHighlightsv2)
+    AdsEngine.getFootballHighlightsv2().success(function (FootballHighlightsv2)
     {
         $scope.FootballHighlightsv2 = FootballHighlightsv2;
         // console.log("LENGTH" + FootballHighlightsv2.length);
@@ -239,8 +239,7 @@ angular
             {
                 "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>",
                 "searchPlaceholder" : " League,Time,Teams and Language"
-            }
-            )
+            })
             .withOption('order', [1, 'asc'])
             .withOption('responsive', true)
             .withOption('scroller',
