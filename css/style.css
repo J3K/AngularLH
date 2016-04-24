@@ -2,6 +2,13 @@ body {
 font-family:'Roboto Condensed', sans-serif;
 }
 
+::selection {
+  background: #26a69a; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #26a69a; /* Gecko Browsers */
+}
+
 .masonry-brick {
 font-size:10px;
 width:200px;

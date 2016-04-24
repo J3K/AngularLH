@@ -1,8 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html ng-app="ngLiveHighlights" >
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title> ~ LiveHighlights ~ </title>
     <!-- Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
@@ -15,22 +15,26 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
    
-    <!-- <link rel='stylesheet' type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"/> -->
+    <link rel='stylesheet' type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"/>
    
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
    
    <link rel="stylesheet" type="text/css" href="css/style.css">
 
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 </head>
 
 
-<body ng-app="ngLiveHighlights" ng-controller="ngLHController as showCase">
+<body ng-controller="ngLHController as showCase">
 
     <div class="row">
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container">
-                <a class="navbar-brand" id="logo-container"  href="#">{{ Title }}</a> 
-                <ul class="right hide-on-med-and-down">
+                <a class="brand-logo right" id="logo-container"  href="#"><img src="http://livehighlights.net/img/logo.png" style="width: 60px;margin:2px"/></a> 
+                <ul class="left  hide-on-med-and-down">
                     <li>
                         <a class="nav-link" href="#">Home</a>
                     </li>
@@ -45,59 +49,75 @@
             </div>
         </nav>
     </div>
-    <!-- <div class="row ng-enter playerDiv" ng-if="PlayerExpanded"> -->
-        
-    <!-- </div> -->
-
-     <!-- Modal LiveGames -->
-    <div id="LiveGames" class="modal bottom-sheet">
-        <div class="modal-content">
-            <h4 class="center-align">{{ TITLE }}</h4>
-            <p>
-                <div class="col s12 centered valign" style="min-height:520px;margin-top: 25px;"> <!-- ng-if="!isHighlights"> -->
-                    <div class="row">
-                        <div class="col s12 centered valign">
-                            <ul class="tabs">
-                                <!-- <li ng-repeat-start="(key, value) in (Links | splitOnly:',')" class="tab col s3" ng-if="key == 0">
-                                    <a href="http://go.ad2up.com/afu.php?id=624727" target="_blank">Link #{{ key }}</a>
-                                </li> -->
-                                <li ng-repeat="(key, value) in (Links | splitOnly:',')" class="tab col s3">
-                                    <!-- <a href="#Link{{ key + 1 }}" ng-click="ClickedLink(value)" class="active" ng-if="key == 0">Link #{{ key + 1 }}</a> -->
-                                    <a id="Link{{ key + 1 }}" href="#Link{{ key + 1 }}" ng-click="ClickedLink(value)">Link #{{ key + 1 }}</a>
-                                    <!-- <a href="{{ value }}" ng-if="key == 7">Link #{{ key + 1 }}</a> -->
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col s12 center-align valign iframePlayer" style="padding-top: 10px;">
-                            <iframe ng-src="{{ PlayerCode }}" id="iframePlayer" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                        </div>
-                    </div>      
-                </div>
-            </p>
-        </div>
-        <div class="modal-footer">
-            <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
-        </div>
-    </div>
-
-
-     <!-- Modal Highlights -->
-    <div id="Highlights" class="modal bottom-sheet">
-        <div class="modal-content">
-            <h4 class="center-align">{{ TITLE }}</h4>
-            <p>
-                <div class="col-sm-12 center-align valign" style="min-height:520px;margin-top: 25px;" style="padding-top: 10px;"> <!-- ng-if="isHighlights"> -->
-                    <iframe ng-src="{{ HighlightsCode }}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                </div>
-            </p>
-        </div>
-        <div class="modal-footer">
-            <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
-        </div>
-    </div>
-
     <div class="row">
-        <div class="col m6">
+         <!-- Modal LiveGames -->
+        <div id="LiveGames" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4 class="center-align">{{ TITLE }}</h4>
+                <p>
+                    <div class="col s12 centered valign" style="min-height:520px;margin-top: 25px;"> <!-- ng-if="!isHighlights"> -->
+                        <div class="row">
+                            <div class="col s12 centered valign">
+                                <ul class="tabs">
+                                    <!-- <li ng-repeat-start="(key, value) in (Links | splitOnly:',')" class="tab col s3" ng-if="key == 0">
+                                        <a href="http://go.ad2up.com/afu.php?id=624727" target="_blank">Link #{{ key }}</a>
+                                    </li> -->
+                                    <li ng-repeat="(key, value) in (Links | splitOnly:',')" class="tab col s3">
+                                        <!-- <a href="#Link{{ key + 1 }}" ng-click="ClickedLink(value)" class="active" ng-if="key == 0">Link #{{ key + 1 }}</a> -->
+                                        <a id="Link{{ key + 1 }}" href="#Link{{ key + 1 }}" ng-click="ClickedLink(value)">Link #{{ key + 1 }}</a>
+                                        <!-- <a href="{{ value }}" ng-if="key == 7">Link #{{ key + 1 }}</a> -->
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col s12 center-align valign iframePlayer" style="padding-top: 10px;">
+                                <div class="col s4 center-align valign iframePlayer">
+                                    <a href="http://pawtr.com/v/59072">
+                                        <img src="https://affiliates.onlineaffiliateworld.com/tools-marketing_tools/download-one/104655.htm" width="300" height="250" alt="">
+                                    </a>       <br/><br/>
+
+                                    <script type="text/javascript">
+                                        atOptions = {
+                                            'key' : 'c9b9899abb7e2ee4fb50820a62d7a8aa',
+                                            'format' : 'iframe',
+                                            'height' : 250,
+                                            'width' : 300,
+                                            'params' : {}
+                                        };
+                                        document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.bnhtml.com/invoke.js"></scr' + 'ipt>');
+                                    </script>                      
+                                </div>
+                                <div class="col s8 center-align valign iframePlayer">
+                                    <iframe ng-src="{{ PlayerCode }}" id="iframePlayer" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>      
+                    </div>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
+            </div>
+        </div>
+
+
+         <!-- Modal Highlights -->
+        <div id="Highlights" class="modal bottom-sheet">
+            <div class="modal-content">
+                <h4 class="center-align">{{ TITLE }}</h4>
+                <p>
+                    <div class="col-sm-12 center-align valign" style="min-height:520px;margin-top: 25px;" style="padding-top: 10px;"> <!-- ng-if="isHighlights"> -->
+                        <iframe ng-src="{{ HighlightsCode }}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col l6 m12 s12">
             <h4 class="center-align valign">Live Football Games</h4>
                 <form>
                     <div class="row">
@@ -110,23 +130,23 @@
                 </form>
 
 
-            <table id="LiveFootballGamesTable" datatable="ng"  dt-options="showCase.dtOptions0" dt-column-defs="showCase.dtColumnDefs0" dt-columns="showCase.dtColumns0" dt-instance="showCase.dtInstance0"  class="highlight responsive-table" cellspacing="0" width="100%">
+            <table id="LiveFootballGamesTable" datatable="ng"  dt-options="showCase.dtOptions0" dt-column-defs="showCase.dtColumnDefs0" dt-columns="showCase.dtColumns0" dt-instance="showCase.dtInstance0"  class="highlight">
                 <thead>
                     <tr>
-                        <th class="center-align valign"><h6>League</h6></th>
-                        <th class="center-align valign"><h6>Time</h6></th>
-                        <th class="center-align valign all"><h6>Team A - Team B</h6></th>
-                        <th class="center-align valign"><h6>L</h6></th>
-                        <th class="center-align valign min-phone-l"><h6>W</h6></th>
+                        <th data-field="League" class="center-align valign"><h6>League</h6></th>
+                        <th data-field="Time" class="center-align valign"><h6>Time</h6></th>
+                        <th data-field="TeamATeamB" class="center-align valign all"><h6>Team A - Team B</h6></th>
+                        <th data-field="Language" class="center-align valign"><h6>L</h6></th>
+                        <th data-field="Watch" class="center-align valign"><h6>W</h6></th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th class="center-align valign"><h6>League</h6></th>
-                        <th class="center-align valign"><h6>Time</h6></th>
-                        <th class="center-align valign all"><h6>Team A - Team B</h6></th>
-                        <th class="center-align valign"><h6>L</h6></th>
-                        <th class="center-align valign min-phone-l"><h6>W</h6></th>
+                        <th data-field="League" class="center-align valign"><h6>League</h6></th>
+                        <th data-field="Time" class="center-align valign"><h6>Time</h6></th>
+                        <th data-field="TeamATeamB" class="center-align valign all"><h6>Team A - Team B</h6></th>
+                        <th data-field="Language" class="center-align valign"><h6>L</h6></th>
+                        <th data-field="Watch" class="center-align valign"><h6>W</h6></th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -137,7 +157,25 @@
                             </font>
                         </td>
                         <td class="centered valign">
-                            <strong>{{ Game.Time * 1000 | date:'HH:mm' }}</strong>
+                            <!-- ng-if="(Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm') <= (date | amDateFormat:'HH:mm');HideTime=true" -->
+                            <b>{{ Game.Time * 1000 | amDateFormat:'HH:mm' }}</b>
+
+                            <!-- <b ng-if="(Game.Time * 1000 | amDateFormat:'HH:mm') >= (date | amDateFormat:'HH:mm');">
+                                {{(Game.Time) * 1000 | amDateFormat:'HH:mm')}}
+                            </b> -->
+                            
+                            <!-- <b ng-if="!HideTime">{{ Game.Time * 1000 | amDateFormat:'HH:mm' }}</b> -->{{ HideTime }} 
+                            
+                            <span ng-if="(Game.Time * 1000 | amDateFormat:'HH:mm') <= (date | amDateFormat:'HH:mm') && (date | amDateFormat:'HH:mm') <= (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')" class="left-align valign"> 
+                                <img src="http://cdn3.livescore.com/web/img/flash.gif" /> 
+                            </span>
+
+                            <!-- <p>{{ (date | amDateFormat:'HH:mm')   }}</p>
+                            <p>{{   (Game.Time * 1000 | amDateFormat:'HH:mm')   }} ~ {{   (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')   }}</p> -->
+                            <!-- <p>{{   (Game.Time) * 1000 | amDateFormat:'HH:mm'  }}</p> -->
+                            <!-- <p>{{   (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')  }}</p> -->
+                            <!-- <p>{{   (parseInt(Game.Time) + 7200 ) | date:'HH:mm'  }}</p> -->
+                            <!-- <p>{{   (parseDouble(Game.Time))   }}</p> --> 
                         </td>
                         <td class="centered valign">
                             <div class="row">
@@ -160,7 +198,7 @@
                         </td>
                         <td class="centered valign">  
                             <a class="waves-effect waves-light btn modal-trigger" ng-click="WatchGame(Game.Links,Game.TeamAvsTeamB)" href="#LiveGames">
-                                <i class="material-icons right">play_arrow</i>Watch
+                                <i class="material-icons left">play_arrow</i>Watch
                             </a>
                         </td>
                     </tr>
@@ -168,7 +206,7 @@
             </table>
 
         </div>
-        <div class="col m3">
+        <div class="col l3 m0 s12">
             <h4 class="center-align valign">Highlights / Goals v1</h4>
 
                 <form>
@@ -181,7 +219,7 @@
                     </div>
                 </form>
 
-            <table id="Highlightsv1Table" datatable="ng" dt-options="showCase.dtOptions1" dt-column-defs="showCase.dtColumnDefs1" dt-columns="showCase.dtColumns1" dt-instance="showCase.dtInstanceCallback" class="highlight responsive-table" cellspacing="0" width="100%">
+            <table id="Highlightsv1Table" datatable="ng" dt-options="showCase.dtOptions1" dt-column-defs="showCase.dtColumnDefs1" dt-columns="showCase.dtColumns1" dt-instance="showCase.dtInstanceCallback" class="highlight">
                 <thead>
                     <tr>
                         <th class="centered valign"><h6></h6></th>
@@ -232,7 +270,7 @@
 
         </div>
 
-        <div class="col m3">
+        <div class="col l3 m0 s12">
 
             <h4 class="center-align valign">Highlights / Goals v2</h4>
                 <form>
@@ -245,7 +283,7 @@
                     </div>
                 </form>
 
-            <table id="Highlightsv2Table" datatable="ng" dt-options="showCase.dtOptions2" dt-instance="showCase.dtInstance0" dt-column-defs="showCase.dtColumnDefs2" dt-columns="showCase.dtColumns2" class="highlight responsive-table" cellspacing="0" width="100%">
+            <table id="Highlightsv2Table" datatable="ng" dt-options="showCase.dtOptions2" dt-instance="showCase.dtInstance0" dt-column-defs="showCase.dtColumnDefs2" dt-columns="showCase.dtColumns2" class="highlight">
                 <thead>
                     <tr>
                         <th class="centered valign"><h6>Teams</h6></th>
@@ -268,6 +306,8 @@
         </div>
 
     </div>
+
+
     <div class="row">
         <div class="col-md-12">
             {{ LiveScoreTable }}
@@ -277,6 +317,14 @@
     <!-- <pre>{{ FootballGames | json }}</pre> -->
 
 
+<script type="text/javascript">
+
+            // id_chaine = 'CD2FF2CFBF0066F3E0440021281A8A86';
+
+            // document.write('<scr' + 'ipt src="http://player.performgroup.com/eplayer.js#19ce82fd7dcfccfbd8767f1867.jaiusdqqurb9171stwuuglt3k.p$dfchid=' + id_chaine + '" async><' + '/script>');
+
+
+</script>
 
 
 </body>
@@ -294,6 +342,11 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
+<script src="node_modules/moment/moment.js"></script>
+<script src="node_modules/moment/locale/en-gb.js"></script>
+
+<script src="node_modules/angular-moment/angular-moment.js"></script>
+
 <script type="text/javascript" src="scripts/angular-masonry.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript" src="scripts/ngLHController.js"></script>
@@ -304,5 +357,5 @@
 
 <script type="text/javascript" src="scripts/script.js"></script>
 
-<script type='text/javascript' src='http//go.oclasrv.com/apu.php?zoneid=466458'></script>
+<script type='text/javascript' src='http://go.oclasrv.com/apu.php?zoneid=466458'></script>
 </html>

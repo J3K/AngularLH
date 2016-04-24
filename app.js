@@ -1,4 +1,4 @@
-angular.module('ngLiveHighlights', ['datatables']);
+angular.module('ngLiveHighlights', ['datatables','angularMoment']);
 
 // jQuery(document).ready(function($) {
 // 	var navbar = $('.navbar');
