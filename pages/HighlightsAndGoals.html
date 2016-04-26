@@ -1,0 +1,100 @@
+<div class="row">
+
+    <div class="col l6 m12 s12">
+        <h4 class="center-align valign">Highlights / Goals v1</h4>
+
+            <!-- <form>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">search</i>
+                            <input id="icon_prefix" type="text" placeholder="Search " ng-model="searchHighlightv1">
+                            <label for="icon_prefix"></label>
+                    </div>
+                </div>
+            </form> -->
+
+        <table id="Highlightsv1Table" datatable="ng" dt-options="dtOptions1" dt-column-defs="dtColumnDefs1" dt-columns="dtColumns1" dt-instance="dtInstanceCallback" class="highlight">
+            <thead>
+                <tr>
+                    <th class="centered valign"><h6></h6></th>
+                    <th class="centered valign"><h6>Teams</h6></th>
+                    <th class="centered valign all"><h6>Score</h6></th>
+                    <th class="centered valign"><h6></h6></th>
+                </tr>
+            </thead>
+            <tbody class="centered valign"><!--  | filter:searchHighlightv1 -->
+                <tr ng-repeat="Highlight in FootballHighlightsv1" >
+                    <td>
+                        <img ng-src="{{ Highlight.logo }}" height="25" width="25"/>
+                    </td>
+                    <!-- <td>{{ Highlight.date  | split:' ':0 }}</td> -->
+                    <td>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ Highlight.hometeam }}
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ Highlight.awayteam }}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ Highlight.score | split:'-':0 }}
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ Highlight.score | split:'-':1 }}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <!-- <button type="button" class="btn btn-primary btn-xs" ng-click="ClickedHighlightsLink(Highlight.link)">Watch</button> -->
+                        <a class="waves-effect waves-light btn  btn-small modal-trigger" ng-click="ClickedHighlightsLink(Highlight.link,Highlight.hometeam + ' ' + Highlight.score + ' ' + Highlight.awayteam)">
+                            <i class="material-icons left">play_arrow</i>Watch
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col l6 m12 s12">
+
+        <h4 class="center-align valign">Highlights / Goals v2</h4>
+            <!-- <form>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">search</i>
+                            <input id="icon_prefix" type="text" placeholder="Search " ng-model="searchHighlightv2">
+                            <label for="icon_prefix"></label>
+                    </div>
+                </div>
+            </form> -->
+
+        <table id="Highlightsv2Table" datatable="ng" dt-options="dtOptions2" dt-instance="dtInstance0" dt-column-defs="dtColumnDefs2" dt-columns="dtColumns2" class="highlight">
+            <thead>
+                <tr>
+                    <th class="centered valign"><h6>Teams</h6></th>
+                    <th class="centered valign"><h6></h6></th>
+                </tr>
+            </thead>
+            <tbody class="centered valign">
+                <tr ng-repeat="Highlight in FootballHighlightsv2" >
+                    <td>{{ Highlight.game }}                            </td>
+                    <td>
+                        <!-- <button type="button" class="btn btn-primary btn-xs" ng-click="ClickedHighlightsLink(Highlight.link)">Watch</button> -->
+                        <a class="waves-effect waves-light btn modal-trigger" ng-click="ClickedHighlightsLink(Highlight.link,Highlight.game)">
+                            <i class="material-icons left">play_arrow</i>Watch
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

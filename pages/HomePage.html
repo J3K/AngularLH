@@ -1,0 +1,171 @@
+<div class="row" style="position:relative;padding-top:0">
+
+    <div class="col l6 m12 s12">
+        <h4 class="center-align valign">Today Live Football Games</h4>
+            <!-- <form>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">search</i>
+                            <input id="icon_prefix" type="text" placeholder="Search : League,Time,Teams and Language " ng-model="searchGame">
+                            <label for="icon_prefix"></label>
+                    </div>
+                </div>
+            </form> -->
+
+
+        <table id="LiveFootballGamesTable" datatable="ng"  dt-options="dtOptions0" dt-column-defs="dtColumnDefs0" dt-columns="dtColumns0" dt-instance="dtInstance0"  class="highlight">
+            <thead>
+                <tr>
+                    <th data-field="League" class="center-align valign"><h6>League</h6></th>
+                    <th data-field="Time" class="center-align valign"><h6>Time</h6></th>
+                    <th data-field="TeamATeamB" class="center-align valign all"><h6>Team A - Team B</h6></th>
+                    <th data-field="Language" class="center-align valign"><h6>L</h6></th>
+                    <th data-field="Watch" class="center-align valign"><h6>W</h6></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th data-field="League" class="center-align valign"><h6>League</h6></th>
+                    <th data-field="Time" class="center-align valign"><h6>Time</h6></th>
+                    <th data-field="TeamATeamB" class="center-align valign all"><h6>Team A - Team B</h6></th>
+                    <th data-field="Language" class="center-align valign"><h6>L</h6></th>
+                    <th data-field="Watch" class="center-align valign"><h6>W</h6></th>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr ng-repeat="Game in FootballGames | orderBy:sortType2 | orderBy:sortType" >
+                    <td class="left-align valign v2">
+                        <font color="darkgreen">
+                            <strong>{{ Game.League }}</strong>
+                        </font>
+                    </td>
+                    <td class="centered valign v2">
+                        <!-- ng-if="(Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm') <= (date | amDateFormat:'HH:mm');HideTime=true" -->
+                        <b>{{ Game.Time * 1000 | amDateFormat:'HH:mm' }}</b>
+
+                        <!-- <b ng-if="(Game.Time * 1000 | amDateFormat:'HH:mm') >= (date | amDateFormat:'HH:mm');">
+                            {{(Game.Time) * 1000 | amDateFormat:'HH:mm')}}
+                        </b> -->
+                        
+                        <!-- <b ng-if="!HideTime">{{ Game.Time * 1000 | amDateFormat:'HH:mm' }}</b> -->{{ HideTime }} 
+                        
+                        <span ng-if="(Game.Time * 1000 | amDateFormat:'HH:mm') <= (date | amDateFormat:'HH:mm') && (date | amDateFormat:'HH:mm') <= (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')" class="left-align valign"> 
+                            <img src="http://cdn3.livescore.com/web/img/flash.gif" /> 
+                        </span>
+
+                        <!-- <p>{{ (date | amDateFormat:'HH:mm')   }}</p>
+                        <p>{{   (Game.Time * 1000 | amDateFormat:'HH:mm')   }} ~ {{   (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')   }}</p> -->
+                        <!-- <p>{{   (Game.Time) * 1000 | amDateFormat:'HH:mm'  }}</p> -->
+                        <!-- <p>{{   (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')  }}</p> -->
+                        <!-- <p>{{   (parseInt(Game.Time) + 7200 ) | date:'HH:mm'  }}</p> -->
+                        <!-- <p>{{   (parseDouble(Game.Time))   }}</p> --> 
+                    </td>
+                    <td class="centered valign v2">
+                        <div class="row">
+                            <div class="col m2 sm-hidden">
+                                <img ng-src="http://livehighlights.net/{{ Game.logoTeamA }}" height="25" width="25"/>
+                            </div>
+                            <div class="col m10"><strong>{{ Game.TeamAvsTeamB | split:'-':0 }}</strong></div>
+                        </div> 
+                        <div class="row">
+                            <div class="col m2"><img ng-src="http://livehighlights.net/{{ Game.logoTeamB }}" height="25" width="25"/></div>
+                            <div class="col m10"><strong>{{ Game.TeamAvsTeamB | split:'-':1 }}</strong></div>
+                        </div>
+                    </td>
+
+                    <td class="centered valign v2">
+                        <font color="darkblue">
+                            <p class="center-align" ><strong>{{ Game.Quality }}</strong>
+                            <strong>{{ Game.Language }}</strong></p>
+                        </font>
+                    </td>
+                    <td class="center-align  valign v2">  
+                        <a class="waves-effect waves-light btn modal-trigger tooltipped" data-position="right" data-tooltip="{{ Game.Quality }}" ng-click="WatchGame(Game.Links,Game.TeamAvsTeamB)">
+                            <i class="material-icons left">play_arrow</i>Watch
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col l6 m12 s12">
+        <h4 class="center-align valign">All Sports</h4>
+            <!-- <form>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">search</i>
+                            <input id="icon_prefix" type="text" placeholder="Search : League,Time,Teams and Language " ng-model="searchGamev3">
+                            <label for="icon_prefix"></label>
+                    </div>
+                </div>  
+            </form> -->
+
+        <table id="LiveFootballGamesTable" datatable="ng"  dt-options="dtOptions3" dt-column-defs="dtColumnDefs3" dt-columns="dtColumns3" dt-instance="dtInstance3"  class="highlight">
+            <thead>
+                <tr>
+                    <th data-field="DateTime" class="center-align valign"><h6>DateTime</h6></th>
+                    <th data-field="SportName" class="center-align valign"><h6>Sport Name</h6></th>
+                    <th data-field="NationCompetition" class="center-align valign all"><h6>Nation/Competition</h6></th>
+                    <th data-field="Game" class="center-align valign"><h6>Game</h6></th>
+                    <th data-field="Watch" class="center-align valign"><h6>W</h6></th>
+                </tr>
+            </thead>
+
+            <tfoot>
+                <tr>
+                    <th data-field="DateTime" class="center-align valign"><h6>DateTime</h6></th>
+                    <th data-field="SportName" class="center-align valign"><h6>Sport Name</h6></th>
+                    <th data-field="NationCompetition" class="center-align valign all"><h6>Nation/Competition</h6></th>
+                    <th data-field="Game" class="center-align valign"><h6>Game</h6></th>
+                    <th data-field="Watch" class="center-align valign"><h6>W</h6></th>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr ng-repeat="Game in AllSports" class="ClassTestTR">
+                    <td class="left-align valign v3">
+                        <font color="darkgreen">
+                            <b>{{ Game.Date }}</b>
+                        </font>
+                    </td>
+                    <td class="centered valign v3">
+                        <div class="row ">
+                            <div class="col m12 center-align">
+                                <img ng-src="http://livehighlights.net{{ Game.SportLogo }}" height="15" width="15"/>
+                            </div>
+                            <div class="col m12 center-align"><strong>{{ Game.SportName }}</strong></div>
+                        </div> 
+                    </td>
+                    <td class="centered valign v3">
+                        <div class="row">
+                            <div class="col m12"><i>{{ Game.SportNation }}</i></div>
+                        </div>
+                        <div class="row">
+                            <div class="col m12"><strong>{{ Game.SportCompetition }}</strong></div>
+                        </div> 
+                    </td>
+
+                    <td class="centered valign v3">
+                        <div class="row">
+                            <div class="col m2">
+                                <img ng-src="http://livehighlights.net{{ Game.TeamALogo }}" ng-bind-html="trustedHtml" height="25" width="25"/>
+                            </div>
+                            <div class="col m10"><strong>{{ Game.TeamAName }}</strong></div>
+                        </div> 
+                        <div class="row">
+                            <div class="col m2"><img ng-src="http://livehighlights.net{{ Game.TeamBLogo }}" ng-bind-html="trustedHtml"  height="25" width="25"/></div>
+                            <div class="col m10"><strong>{{ Game.TeamBName }}</strong></div>
+                        </div>
+                    </td>
+
+                    <td class="centered valign">  
+                        <a class="waves-effect waves-light btn modal-trigger" ng-click="ClickedSportLink(Game.Links,Game.TeamAName,Game.TeamBName,Game.WEBStreams,Game.P2PStreams)">
+                            <i class="material-icons left">play_arrow</i>Watch
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
