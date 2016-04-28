@@ -91,11 +91,11 @@ angular
     }
     function getFootballHighlightsv1()  
     {
-        return $http.get('http://cdn.livehighlights.net/content/web/Modules/Highlights', { cache: true});
+        return $http.get('http://cdn.livehighlights.net/content/web/Modules/Highlightsv2', { cache: true});
     }
     function getFootballHighlightsv2()  
     {
-        return $http.get('http://cdn.livehighlights.net/content/web/Modules/HighlightsArena'/*, { cache: true}*/);
+        return $http.get('http://cdn.livehighlights.net/content/web/Modules/HighlightsArenav2'/*, { cache: true}*/);
     }
 
 

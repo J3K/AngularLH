@@ -37,6 +37,7 @@
       })(jQuery, MobileEsp);
     </script>
 
+
 </head>
 
 
@@ -125,8 +126,8 @@
             <div class="modal-content">
                 <h4 class="center-align">{{ TITLE }}</h4>
                 <p>
-                    <div class="col-sm-12 center-align valign" style="min-height:520px;margin-top: 25px;" style="padding-top: 10px;"> <!-- ng-if="isHighlights"> -->
-                        <iframe ng-src="{{ HighlightsCode }}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <div class="col-sm-12 center-align valign video-container" style="min-height:520px;margin-top: 25px;" style="padding-top: 10px;"> <!-- ng-if="isHighlights"> -->
+                        <iframe ng-src="{{ HighlightsCode }}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
                     </div>
                 </p>
             </div>

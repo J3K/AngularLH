@@ -19,6 +19,8 @@ angular
                 controller  : 'HighlightsAndGoals',
                 animation   : 'ShowView'
             })
+            
+
             .otherwise({
                 redirectTo:'/',
                 animation   : 'ShowView'
