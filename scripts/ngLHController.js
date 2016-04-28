@@ -87,7 +87,7 @@ angular
     var vm = $rootScope;
         
     vm.dtOptions1 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+        .withDOM("<'row'<'col s12 m6'p><'col s12 m6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
         .withOption('language',{ "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>",
             "searchPlaceholder" : " Teams and Scores"
         })
@@ -107,7 +107,7 @@ angular
     ];
 
     vm.dtOptions2 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+        .withDOM("<'row'<'col s12 m6'p><'col s12 m6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
         .withOption('language',
         {
             "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>",
@@ -212,16 +212,19 @@ angular.module('ngLiveHighlights').controller('LiveFootballScontroller', functio
         // $('Link' + val(key+1)).css("display", "block");
         $scope.$parent.PlayerCode = $sce.trustAsResourceUrl(key);
     }
+    
+    var i=0;
 
     $scope.$parent.ClickedSportLink = function (key, GameA,GameB,WEB,P2P)
-    {
-
+    {   
+        
         // console.log(key);
 
         $scope.$parent.TITLE = GameA + " - " + GameB;
 
         $scope.$parent.TableP2P = $sce.trustAsHtml(P2P);
         $scope.$parent.TableWEB = $sce.trustAsHtml(WEB);
+                
                 
         $('#Sports').openModal(
         {
@@ -231,20 +234,27 @@ angular.module('ngLiveHighlights').controller('LiveFootballScontroller', functio
             out_duration : 200, // Transition out duration
             ready : function ()
             {
+                // if(i==0)
+                // {
+                    // alert(i);
+                    $("#StreamTable span.votestreams").remove();
+                    $("#StreamTable th:first-child").remove();
+                    $("#StreamTable thead tr").prepend('<th>');
+                    // $("#StreamTable td:first-child").remove();
+                    // i++;
+                    // alert( " i == 0 ");
+                // } else alert( " i != 0 ");
+                // } 
                 // $('ul.tabs').tabs('select_tab', '#Link0');
                 // console.log(WEB);
                 // console.log(P2P);
-
-                $("#StreamTable th:first-child").remove();
-                $("#StreamTable td:first-child").remove();
-
             }, // Callback for Modal open
             complete : function ()
             {
                 $("#Sports").find('iframe').attr('src', "");
+                // i=0;
             } // Callback for Modal close
-        }
-        );
+        });
 
         // console.log($scope.PlayerExpanded);
         if (!$scope.PlayerExpanded)
@@ -255,8 +265,10 @@ angular.module('ngLiveHighlights').controller('LiveFootballScontroller', functio
             $scope.$parent.PlayerExpanded = true;
 
         // console.log($scope.PlayerExpanded);
-
+        // i = 0;
     }
+
+    i=0;
     
     
     var vm = $rootScope;
@@ -265,7 +277,7 @@ angular.module('ngLiveHighlights').controller('LiveFootballScontroller', functio
     if (!$scope.$parent.FootballGames)
     {
         vm.dtOptions0 = DTOptionsBuilder.newOptions()
-            .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+            .withDOM("<'row'<'col s12 m6'p><'col s12 m6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
             .withOption('language',
             {
                 "emptyTable" : "<div class=\"card-panel teal lighten-2\"><div class=\"center-align\"> No game broadcasted right now </div></div>",
@@ -273,6 +285,7 @@ angular.module('ngLiveHighlights').controller('LiveFootballScontroller', functio
             })
             .withOption('order', [1, 'asc'])
             .withOption('responsive', true)
+            // .withOption('responsive', { details: { type: 'column', target: [0,2,5] }})
             .withOption('scroller',
             {
                 'loadingIndicator' : true
@@ -285,7 +298,7 @@ angular.module('ngLiveHighlights').controller('LiveFootballScontroller', functio
     {
 
         vm.dtOptions0 = DTOptionsBuilder.newOptions()
-            .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+            .withDOM("<'row'<'col s12 m6'p><'col s12 m6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
             .withOption('language',
             {
                 "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>",
@@ -313,7 +326,7 @@ angular.module('ngLiveHighlights').controller('LiveFootballScontroller', functio
 
 
     vm.dtOptions3 = DTOptionsBuilder.newOptions()
-        .withDOM("<'row'<'col s6'p><'col s6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
+        .withDOM("<'row'<'col s12 m6'p><'col s12 m6'f>><'row'<'col s12't>><'row'<'col s12'p>>") // pitrfl
         .withOption('language',{ "emptyTable" : "<div class=\"progress\"><div class=\"indeterminate\"></div></div>", "searchPlaceholder" : " League,Time,Teams and Language"})
         .withOption('responsive',true)
         // .withOption('order', [1, 'desc'])

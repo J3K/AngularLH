@@ -13,7 +13,7 @@
             </form> -->
 
 
-        <table id="LiveFootballGamesTable" datatable="ng"  dt-options="dtOptions0" dt-column-defs="dtColumnDefs0" dt-columns="dtColumns0" dt-instance="dtInstance0"  class="highlight">
+        <table id="LiveFootballGamesTable" datatable="ng"  dt-options="dtOptions0" dt-column-defs="dtColumnDefs0" dt-columns="dtColumns0" dt-instance="dtInstance0"  class="highlight bordered table">
             <thead>
                 <tr>
                     <th data-field="League" class="center-align valign"><h6>League</h6></th>
@@ -35,48 +35,52 @@
             <tbody>
                 <tr ng-repeat="Game in FootballGames | orderBy:sortType2 | orderBy:sortType" >
                     <td class="left-align valign v2">
-                        <font color="darkgreen">
-                            <strong>{{ Game.League }}</strong>
-                        </font>
+                            <div class="col s12 sm-hidden">
+                                <font color="darkgreen">
+                                    <strong>{{ Game.League }}</strong>
+                                </font>
+                            </div>
                     </td>
-                    <td class="centered valign v2">
-                        <!-- ng-if="(Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm') <= (date | amDateFormat:'HH:mm');HideTime=true" -->
-                        <b>{{ Game.Time * 1000 | amDateFormat:'HH:mm' }}</b>
+                    <td class="center-align valign v2">
+                        <div class="col s12 sm-hidden center-align">
+                            <!-- ng-if="(Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm') <= (date | amDateFormat:'HH:mm');HideTime=true" -->
+                            <b>{{ Game.Time * 1000 | amDateFormat:'HH:mm' }}</b>
 
-                        <!-- <b ng-if="(Game.Time * 1000 | amDateFormat:'HH:mm') >= (date | amDateFormat:'HH:mm');">
-                            {{(Game.Time) * 1000 | amDateFormat:'HH:mm')}}
-                        </b> -->
-                        
-                        <!-- <b ng-if="!HideTime">{{ Game.Time * 1000 | amDateFormat:'HH:mm' }}</b> -->{{ HideTime }} 
-                        
-                        <span ng-if="(Game.Time * 1000 | amDateFormat:'HH:mm') <= (date | amDateFormat:'HH:mm') && (date | amDateFormat:'HH:mm') <= (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')" class="left-align valign"> 
-                            <img src="http://cdn3.livescore.com/web/img/flash.gif" /> 
-                        </span>
+                            <!-- <b ng-if="(Game.Time * 1000 | amDateFormat:'HH:mm') >= (date | amDateFormat:'HH:mm');">
+                                {{(Game.Time) * 1000 | amDateFormat:'HH:mm')}}
+                            </b> -->
+                            
+                            <!-- <b ng-if="!HideTime">{{ Game.Time * 1000 | amDateFormat:'HH:mm' }}</b> -->{{ HideTime }} 
+                            
+                            <span ng-if="(Game.Time * 1000 | amDateFormat:'HH:mm') <= (date | amDateFormat:'HH:mm') && (date | amDateFormat:'HH:mm') <= (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')" class="left-align valign"> 
+                                <img src="http://cdn3.livescore.com/web/img/flash.gif" /> 
+                            </span>
+                        </div>
 
-                        <!-- <p>{{ (date | amDateFormat:'HH:mm')   }}</p>
-                        <p>{{   (Game.Time * 1000 | amDateFormat:'HH:mm')   }} ~ {{   (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')   }}</p> -->
-                        <!-- <p>{{   (Game.Time) * 1000 | amDateFormat:'HH:mm'  }}</p> -->
-                        <!-- <p>{{   (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')  }}</p> -->
-                        <!-- <p>{{   (parseInt(Game.Time) + 7200 ) | date:'HH:mm'  }}</p> -->
-                        <!-- <p>{{   (parseDouble(Game.Time))   }}</p> --> 
+                            <!-- <p>{{ (date | amDateFormat:'HH:mm')   }}</p>
+                            <p>{{   (Game.Time * 1000 | amDateFormat:'HH:mm')   }} ~ {{   (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')   }}</p> -->
+                            <!-- <p>{{   (Game.Time) * 1000 | amDateFormat:'HH:mm'  }}</p> -->
+                            <!-- <p>{{   (Game.Time * 1000 | amUtcOffset:'+0300' | amDateFormat:'HH:mm')  }}</p> -->
+                            <!-- <p>{{   (parseInt(Game.Time) + 7200 ) | date:'HH:mm'  }}</p> -->
+                            <!-- <p>{{   (parseDouble(Game.Time))   }}</p> --> 
                     </td>
-                    <td class="centered valign v2">
+                    <td class="center-align valign v2">
                         <div class="row">
-                            <div class="col m2 sm-hidden">
+                            <div class="col s12 m2">
                                 <img ng-src="http://livehighlights.net/{{ Game.logoTeamA }}" height="25" width="25"/>
                             </div>
-                            <div class="col m10"><strong>{{ Game.TeamAvsTeamB | split:'-':0 }}</strong></div>
+                            <div class="col s12 m10"><strong>{{ Game.TeamAvsTeamB | split:'-':0 }}</strong></div>
                         </div> 
                         <div class="row">
-                            <div class="col m2"><img ng-src="http://livehighlights.net/{{ Game.logoTeamB }}" height="25" width="25"/></div>
-                            <div class="col m10"><strong>{{ Game.TeamAvsTeamB | split:'-':1 }}</strong></div>
+                            <div class="col s12 m2"><img ng-src="http://livehighlights.net/{{ Game.logoTeamB }}" height="25" width="25"/></div>
+                            <div class="col s12 m10"><strong>{{ Game.TeamAvsTeamB | split:'-':1 }}</strong></div>
                         </div>
                     </td>
 
-                    <td class="centered valign v2">
+                    <td class="center-align valign v2">
                         <font color="darkblue">
-                            <p class="center-align" ><strong>{{ Game.Quality }}</strong>
-                            <strong>{{ Game.Language }}</strong></p>
+                            <div class="col s12 m2 center-align"><p class="center-align" ><strong>{{ Game.Quality }}</strong></div>
+                            <div class="col s12 m2 center-align"><strong>{{ Game.Language }}</strong></p></div>
                         </font>
                     </td>
                     <td class="center-align  valign v2">  

@@ -26,8 +26,16 @@ angular
     });
     
  $(document).ready(function(){
+     
+  $(".button-collapse").sideNav();
+  
+  // $('.RightMenuNav').sideNav('show');
+  // $('.slide-out').sideNav('show');
+  
     $('ul.tabs').tabs();
   });
+      
+      
       
       
       

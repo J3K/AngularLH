@@ -3,8 +3,6 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="viewport" content="width=device-width" />
-
     <title> ~ LiveHighlights ~ </title>
     <!-- Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
@@ -17,7 +15,6 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
    
-    <link rel='stylesheet' type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"/>
    
 <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
    
@@ -32,8 +29,8 @@
 
 <body ng-class="animation">
     
-    <div class="nav-wrapper container">
-        <ul id="slide-out" class="side-nav fixed RightMenuNav light-blue lighten-1 center-align" style="width: 90px;">
+    <div>
+        <ul id="slide-out" class="side-nav fixed RightMenuNav light-blue lighten-1 center-align show-on-small" style="width: 90px;">
             <li style="padding-bottom:200px;">
                 <a href="http://192.168.1.199/Angular">
                     <img src="http://livehighlights.net/img/logo.png" style="width: 75px;">
@@ -60,9 +57,12 @@
                 </a>
             </li>
         </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse">                   
+            <i class="fa fa-bars" style="font-size:25px"></i>
+        </a>
     </div>
     
-    <div class="row" style="margin-left:85px;">
+    <div class="row marginContent" style="margin-left:85px;">
         <!-- Modal LiveGames -->
         <div id="LiveGames" class="modal bottom-sheet" style="margin-left:90px;z-index:9999999999999">
             <div class="modal-content">
@@ -150,7 +150,7 @@
 
     </div>
 
-    <div class="row" id="main" style="margin-left:85px;position:relative;top:-100px;">
+    <div class="row marginContent" id="main" style="position:relative;top:-100px;">
         <div ng-view class="view"></div>
     </div>
     <!-- <pre>{{ FootballGames | json }}</pre> -->
@@ -159,7 +159,8 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <!-- <script src="http://passy.github.io/angular-masonry/bower_components/masonry/masonry.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
+<!-- <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script> -->
 
 <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
 
