@@ -24,12 +24,34 @@
    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2289776593407763",
+    enable_page_level_ads: true
+  });
+</script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+<script src='scripts/mdetect.js'></script>
+    <script>
+      (function ($, MobileEsp) {
+        // On document ready, redirect to the App on the App store.
+        $(function () {
+          if (MobileEsp.DetectAndroid()) {
+            alert("Website doesnt Support Mobile, get the app on Android to watch live streams.");
+            window.location.href = 'https://play.google.com/store/apps/details?id=net.livehighlights.livefootballstreaming';
+          }
+        });
+      })(jQuery, MobileEsp);
+    </script>
+
 </head>
 
 
 <body ng-class="animation">
     
-    <div>
+    <div class="asd">
         <ul id="slide-out" class="side-nav fixed RightMenuNav light-blue lighten-1 center-align show-on-small" style="width: 90px;">
             <li style="padding-bottom:200px;">
                 <a href="http://192.168.1.199/Angular">
@@ -156,7 +178,6 @@
     <!-- <pre>{{ FootballGames | json }}</pre> -->
 
 </body>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <!-- <script src="http://passy.github.io/angular-masonry/bower_components/masonry/masonry.js"></script> -->
 <!-- <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
