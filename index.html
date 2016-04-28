@@ -43,12 +43,16 @@
 
 <body ng-class="animation">
     
-    <div class="asd">
+    <div class="asd" ng-controller="HighlightsAndGoals">
         <ul id="slide-out" class="side-nav fixed RightMenuNav light-blue lighten-1 center-align show-on-small" style="width: 90px;">
             <li style="padding-bottom:200px;">
                 <a href="http://192.168.1.199/Angular">
                     <img src="http://livehighlights.net/img/logo.png" style="width: 75px;">
                 </a>
+            </li>
+            <li>
+                Time :
+                {{ date | amDateFormat:'HH:mm' }}
             </li>
             <li>
                 <a href="#/" class="center-align">
@@ -78,7 +82,7 @@
     
     <div class="row marginContent" style="margin-left:85px;">
         <!-- Modal LiveGames -->
-        <div id="LiveGames" class="modal bottom-sheet" style="margin-left:90px;z-index:9999999999999">
+        <div id="LiveGames" class="modal bottom-sheet" style="z-index:9999999999999">
             <div class="modal-content">
                 <h4 class="center-align">{{ TITLE }}</h4>
                 <p>
@@ -122,14 +126,40 @@
         </div>
 
         <!-- Modal Highlights -->
-        <div id="Highlights" class="modal bottom-sheet" style="margin-left:90px;z-index:9999999999999">
+        <div id="Highlights" class="modal bottom-sheet" style="z-index:9999999999999">
             <div class="modal-content">
                 <h4 class="center-align">{{ TITLE }}</h4>
-                <p>
-                    <div class="col-sm-12 center-align valign video-container" style="min-height:520px;margin-top: 25px;" style="padding-top: 10px;"> <!-- ng-if="isHighlights"> -->
-                        <iframe ng-src="{{ HighlightsCode }}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                
+                    <div class="col m6 center-align valign " style="min-height:520px;margin-top: 25px;" style="padding-top: 10px;"> <!-- ng-if="isHighlights"> -->
+                        <iframe ng-src="{{ HighlightsCode }}" ng-bind-html="trustedHtml" width="960" height="540" frameborder="0" scrolling="no"></iframe>
                     </div>
-                </p>
+
+                        <div class="col m6 right-align">
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : 'c9b9899abb7e2ee4fb50820a62d7a8aa',
+                                    'format' : 'iframe',
+                                    'height' : 250,
+                                    'width' : 300,
+                                    'params' : {}
+                                };
+                                document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.bnhtml.com/invoke.js"></scr' + 'ipt>');
+                            </script>
+                        </div>
+
+                        <div class="col m6 right-align">
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : 'c9b9899abb7e2ee4fb50820a62d7a8aa',
+                                    'format' : 'iframe',
+                                    'height' : 250,
+                                    'width' : 300,
+                                    'params' : {}
+                                };
+                                document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.bnhtml.com/invoke.js"></scr' + 'ipt>');
+                            </script>
+                        </div>
+
             </div>
             <div class="modal-footer">
                 <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
@@ -137,11 +167,11 @@
         </div>
 
         <!-- Modal Sports -->
-        <div id="Sports" class="modal bottom-sheet" style="margin-left:90px;z-index:9999999999999">
+        <div id="Sports" class="modal bottom-sheet" style="z-index:9999999999999">
             <div class="modal-content">
                 <h3 class="center-align">{{ TITLE }}</h3>
-                <p>
-                    <div class="col m12 center-align valign" style="min-height:520px;margin-top: 25px;" style="padding-top: 10px;">
+                <div class="row">
+                    <div class="col m8 center-align valign" style="min-height:520px;margin-top: 25px;" style="padding-top: 10px;">
                         <div class="col m6">
                             <h4>WEB Streams</h4>
                             <table id="StreamTable" ng-bind-html="TableWEB">
@@ -155,9 +185,49 @@
                                 <!-- {{ TableP2P }} -->
                             </table>
                         </div>
-
                     </div>
-                </p>
+                    <div class="col m4">
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : 'c9b9899abb7e2ee4fb50820a62d7a8aa',
+                                    'format' : 'iframe',
+                                    'height' : 250,
+                                    'width' : 300,
+                                    'params' : {}
+                                };
+                                document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.bnhtml.com/invoke.js"></scr' + 'ipt>');
+                            </script>
+                    </div>
+                </div>
+                <div class="row">
+                        
+                        <div class="col m6">
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : 'c9b9899abb7e2ee4fb50820a62d7a8aa',
+                                    'format' : 'iframe',
+                                    'height' : 250,
+                                    'width' : 300,
+                                    'params' : {}
+                                };
+                                document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.bnhtml.com/invoke.js"></scr' + 'ipt>');
+                            </script>
+                        </div>
+                        
+
+                        <div class="col m6">
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : 'c9b9899abb7e2ee4fb50820a62d7a8aa',
+                                    'format' : 'iframe',
+                                    'height' : 250,
+                                    'width' : 300,
+                                    'params' : {}
+                                };
+                                document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.bnhtml.com/invoke.js"></scr' + 'ipt>');
+                            </script>
+                        </div>
+                    </div>
             </div>
             <div class="modal-footer">
                 <!-- <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
@@ -207,7 +277,7 @@
 
 <script type="text/javascript" src="scripts/script.js"></script>
 
-<script type='text/javascript' src='http://go.oclasrv.com/apu.php?zoneid=466458'></script>
+<!-- <script type='text/javascript' src='http://go.oclasrv.com/apu.php?zoneid=466458'></script> -->
 
 <script type="text/javascript">
 

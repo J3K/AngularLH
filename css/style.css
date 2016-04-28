@@ -115,6 +115,8 @@ border-radius:0;
 
 .modal.bottom-sheet {
     max-height: 80%;
+    
+    min-height: 90%;
 }
 
 .row {
@@ -249,11 +251,55 @@ div#LiveFootballGamesTable_paginate {
         margin-left:85px;
     }
     
+
+    #LiveGames{
+        margin-left:90px;
+        padding-right: 90px;
+    }
+
+    #Highlights{
+        margin-left:90px;
+        padding-right: 90px;
+    }
+
+    #Sports{
+        margin-left:90px;
+        padding-right: 90px;
+    }
+
 @media only screen and (max-width: 630px) {
     .marginContent{
         margin-left:0px;
     }
-    .modalPadd{
+    #LiveGames{
         margin-left:0px;
+        padding-right: 0px;
+    }
+
+    #Highlights{
+        margin-left:0px;
+        padding-right: 0px;
+    }
+
+    #Sports{
+        margin-left:0px;
+        padding-right: 0px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #LiveGames{
+        margin-left:0px;
+        padding-right: 0px;
+    }
+
+    #Highlights{
+        margin-left:0px;
+        padding-right: 0px;
+    }
+
+    #Sports{
+        margin-left:0px;
+        padding-right: 0px;
     }
 }
